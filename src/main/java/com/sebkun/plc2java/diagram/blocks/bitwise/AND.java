@@ -2,17 +2,20 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.Block;
 
-/**
- * Created by sebkun on 2017-08-17.
- */
-public class ANDBlock extends Block {
+import java.util.List;
+import java.util.Map;
 
-    public ANDBlock() {
-        super(0);
+/**
+ * @author sebkun
+ */
+public class AND extends Block {
+
+    public AND(int executionOrderID) {
+        super(executionOrderID);
     }
 
     @Override
-    public void execute() {
-
+    public Map<String, Integer> execute() {
+        return null;
     }
 }
