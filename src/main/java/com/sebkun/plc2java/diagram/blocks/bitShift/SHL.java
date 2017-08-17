@@ -1,13 +1,13 @@
 package com.sebkun.plc2java.diagram.blocks.bitShift;
 
-import com.sebkun.plc2java.diagram.blocks.Block;
+import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 
 import java.util.Map;
 
 /**
  * @author sebkun
  */
-public class SHL extends Block {
+public class SHL extends FunctionBlock {
 
     public SHL(int executionOrderId) {
         super(executionOrderId);

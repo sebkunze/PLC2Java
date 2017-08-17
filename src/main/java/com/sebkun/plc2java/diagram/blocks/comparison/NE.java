@@ -1,13 +1,13 @@
 package com.sebkun.plc2java.diagram.blocks.comparison;
 
-import com.sebkun.plc2java.diagram.blocks.Block;
+import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 
 import java.util.Map;
 
 /**
  * @author sebkun
  */
-public class NE extends Block {
+public class NE extends FunctionBlock {
 
     public NE(int executionOrderId) {
         super(executionOrderId);

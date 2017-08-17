@@ -5,11 +5,11 @@ import java.util.Map;
 /**
  * @author sebkun
  */
-public abstract class Block {
+public abstract class FunctionBlock {
 
     protected int executionOrderId;
 
-    public Block(int executionOrderId) {
+    public FunctionBlock(int executionOrderId) {
         this.executionOrderId = executionOrderId;
     }
 
