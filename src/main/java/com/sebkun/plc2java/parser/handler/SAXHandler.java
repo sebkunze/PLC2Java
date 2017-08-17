@@ -1,13 +1,13 @@
 package com.sebkun.plc2java.parser.handler;
 
-import com.sebkun.plc2java.parser.objects.Definition;
-import com.sebkun.plc2java.parser.objects.Function;
-import com.sebkun.plc2java.parser.objects.definitions.VariableDefinition;
-import com.sebkun.plc2java.parser.objects.functions.Block;
-import com.sebkun.plc2java.parser.objects.variables.InOutVariable;
-import com.sebkun.plc2java.parser.objects.variables.InVariable;
-import com.sebkun.plc2java.parser.objects.variables.OutVariable;
-import com.sebkun.plc2java.parser.objects.Variable;
+import com.sebkun.plc2java.parser.objects.XMLDefinition;
+import com.sebkun.plc2java.parser.objects.XMLFunction;
+import com.sebkun.plc2java.parser.objects.definitions.XMLVariableDefinition;
+import com.sebkun.plc2java.parser.objects.functions.XMLBlock;
+import com.sebkun.plc2java.parser.objects.variables.XMLInOutVariable;
+import com.sebkun.plc2java.parser.objects.variables.XMLInVariable;
+import com.sebkun.plc2java.parser.objects.variables.XMLOutVariable;
+import com.sebkun.plc2java.parser.objects.XMLVariable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -77,19 +77,19 @@ public class SAXHandler extends DefaultHandler {
      * --- PARSED FBD PROGRAM ELEMENTS ---
      */
 
-    private List<Function> functions     = new ArrayList<Function>();
+    private List<XMLFunction>   functions   = new ArrayList<XMLFunction>();
 
-    private List<Variable> variables     = new ArrayList<Variable>();
+    private List<XMLVariable>   variables   = new ArrayList<XMLVariable>();
 
-    private List<Definition> definitions = new ArrayList<Definition>();
+    private List<XMLDefinition> definitions = new ArrayList<XMLDefinition>();
 
     /**
-     * --- STACK ELEMENTS FOR PARSING ---®
+     * --- STACK ELEMENTS FOR PARSING ---
      */
 
-    private Stack<String> elmStack   = new Stack<String>();
+    private Stack<String> elmStack = new Stack<String>();
 
-    private Stack<Object> objStack   = new Stack<Object>();
+    private Stack<Object> objStack = new Stack<Object>();
 
     @Override
     public void startDocument() throws SAXException {
@@ -108,7 +108,7 @@ public class SAXHandler extends DefaultHandler {
 
         if (ELEMENT_BLOCK.equals(qName)) {
 
-            Block block = new Block(
+            XMLBlock block = new XMLBlock(
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_LOCAL_ID))),
                     String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_TYPE_NAME))),
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_EXECUTION_ORDER_ID))));
@@ -119,7 +119,7 @@ public class SAXHandler extends DefaultHandler {
 
         } else if (ELEMENT_VARIABLE.equals(qName) && currentElementParent().equals(ELEMENT_LOCAL_VARS)) {
 
-            VariableDefinition var = new VariableDefinition(
+            XMLVariableDefinition var = new XMLVariableDefinition(
                     String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_NAME))));
 
             this.objStack.push(var);
@@ -128,13 +128,13 @@ public class SAXHandler extends DefaultHandler {
 
         } else if ((ELEMENT_BOOL.equals(qName) || ELEMENT_INT.equals(qName)) && currentElementParent().equals(ELEMENT_TYPE)) {
 
-            Definition def = (Definition) this.objStack.peek();
+            XMLDefinition def = (XMLDefinition) this.objStack.peek();
 
             def.setType(qName);
 
         } else if (ELEMENT_SIMPLE_VALUE.equals(qName) && currentElementParent().equals(ELEMENT_INITIAL_VALUE)) {
 
-            Definition def = (Definition) this.objStack.peek();
+            XMLDefinition def = (XMLDefinition) this.objStack.peek();
 
             def.setInitialValue(
                     String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_VALUE))));
@@ -144,42 +144,42 @@ public class SAXHandler extends DefaultHandler {
             this.objStack.push(
                     String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_FORMAL_PARAMETER))));
 
-        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(Block.ATTRIBUTE_INPUT_VARIABLES)) {
+        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(XMLBlock.ATTRIBUTE_INPUT_VARIABLES)) {
 
             String param = String.valueOf(this.objStack.pop());
 
-            Block block = (Block) this.objStack.peek();
+            XMLBlock block = (XMLBlock) this.objStack.peek();
 
             block.setInputVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(Block.ATTRIBUTE_REF_LOCAL_ID))));
+                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
 
             this.objStack.push(param);
 
-        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(Block.ATTRIBUTE_INOUT_VARIABLES)) {
+        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(XMLBlock.ATTRIBUTE_INOUT_VARIABLES)) {
 
             String param = String.valueOf(this.objStack.pop());
 
-            Block block = (Block) this.objStack.peek();
+            XMLBlock block = (XMLBlock) this.objStack.peek();
 
             block.setInOutVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(Block.ATTRIBUTE_REF_LOCAL_ID))));
+                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
 
             this.objStack.push(param);
 
-        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(Block.ATTRIBUTE_OUTPUT_VARIABLES)) {
+        } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(XMLBlock.ATTRIBUTE_OUTPUT_VARIABLES)) {
 
             String param = String.valueOf(this.objStack.pop());
 
-            Block block = (Block) this.objStack.peek();
+            XMLBlock block = (XMLBlock) this.objStack.peek();
 
             block.setOutputVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(Block.ATTRIBUTE_REF_LOCAL_ID))));
+                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
 
             this.objStack.push(param);
 
         } else if (ELEMENT_IN_VARIABLE.equals(qName)) {
 
-            InVariable var = new InVariable(
+            XMLInVariable var = new XMLInVariable(
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_LOCAL_ID))),
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_EXECUTION_ORDER_ID))),
                     Boolean.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_NEGATED))));
@@ -192,7 +192,7 @@ public class SAXHandler extends DefaultHandler {
 
         } else if (ELEMENT_IN_OUT_VARIABLE.equals(qName)) {
 
-            InOutVariable var = new InOutVariable(
+            XMLInOutVariable var = new XMLInOutVariable(
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_LOCAL_ID))),
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_EXECUTION_ORDER_ID))),
                     Boolean.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_NEGATED_IN))),
@@ -206,7 +206,7 @@ public class SAXHandler extends DefaultHandler {
 
         } else if (ELEMENT_OUT_VARIABLE.equals(qName)) {
 
-            OutVariable var = new OutVariable(
+            XMLOutVariable var = new XMLOutVariable(
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_LOCAL_ID))),
                     Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_EXECUTION_ORDER_ID))),
                     Boolean.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_NEGATED))));
@@ -255,7 +255,7 @@ public class SAXHandler extends DefaultHandler {
 
         if (ELEMENT_EXPRESSION.equals(currentElement())) {
 
-            Variable var = (Variable) this.objStack.peek();
+            XMLVariable var = (XMLVariable) this.objStack.peek();
 
             var.setExpression(value);
         }
@@ -292,18 +292,18 @@ public class SAXHandler extends DefaultHandler {
         return this.elmStack.contains(elm);
     }
 
-    public List<Function> getFunctions() {
+    public List<XMLFunction> getFunctions() {
 
         return functions;
     }
 
 
-    public List<Variable> getVariables() {
+    public List<XMLVariable> getVariables() {
 
         return variables;
     }
 
-    public List<Definition> getDefinitions() {
+    public List<XMLDefinition> getDefinitions() {
 
         return definitions;
     }

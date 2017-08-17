@@ -1,10 +1,9 @@
 package com.sebkun.plc2java.parser;
 
-import com.sebkun.plc2java.diagram.Diagram;
 import com.sebkun.plc2java.parser.handler.SAXHandler;
-import com.sebkun.plc2java.parser.objects.Definition;
-import com.sebkun.plc2java.parser.objects.Function;
-import com.sebkun.plc2java.parser.objects.Variable;
+import com.sebkun.plc2java.parser.objects.XMLDefinition;
+import com.sebkun.plc2java.parser.objects.XMLFunction;
+import com.sebkun.plc2java.parser.objects.XMLVariable;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -16,15 +15,15 @@ import java.util.List;
 /**
  * @author sebkun
  */
-public class Document {
+public class XMLDocument {
 
-    List<Function>   functions;
+    List<XMLFunction>   functions;
 
-    List<Variable>   variables;
+    List<XMLVariable>   variables;
 
-    List<Definition> definitions;
+    List<XMLDefinition> definitions;
 
-    public Document(String path) {
+    public XMLDocument(String path) {
 
         try {
 
@@ -46,21 +45,21 @@ public class Document {
 
             e.printStackTrace();
 
-            functions  = new ArrayList<Function>();
-            variables  = new ArrayList<Variable>();
-            definitions = new ArrayList<Definition>();
+            functions  = new ArrayList<XMLFunction>();
+            variables  = new ArrayList<XMLVariable>();
+            definitions = new ArrayList<XMLDefinition>();
         }
     }
 
-    public List<Function> getFunctions() {
+    public List<XMLFunction> getFunctions() {
         return functions;
     }
 
-    public List<Variable> getVariables() {
+    public List<XMLVariable> getVariables() {
         return variables;
     }
 
-    public List<Definition> getDefinitions() {
+    public List<XMLDefinition> getDefinitions() {
         return definitions;
     }
 }

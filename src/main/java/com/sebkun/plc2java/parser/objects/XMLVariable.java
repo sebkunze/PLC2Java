@@ -3,7 +3,7 @@ package com.sebkun.plc2java.parser.objects;
 /**
  * @author sebkun
  */
-public abstract class Variable {
+public abstract class XMLVariable {
 
     protected Integer localID;
 
@@ -13,7 +13,7 @@ public abstract class Variable {
 
     protected String expression;
 
-    public Variable(Integer localID, Integer executionOrder, Boolean negated) {
+    public XMLVariable(Integer localID, Integer executionOrder, Boolean negated) {
 
         if (localID == null || executionOrder == null) {
             throw new NullPointerException();

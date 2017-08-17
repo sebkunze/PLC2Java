@@ -3,7 +3,7 @@ package com.sebkun.plc2java.parser.objects;
 /**
  * @author sebkun
  */
-public abstract class Definition {
+public abstract class XMLDefinition {
 
     private String name;
 
@@ -11,7 +11,7 @@ public abstract class Definition {
 
     private String initialValue;
 
-    public Definition(String name) {
+    public XMLDefinition(String name) {
         this.name = name;
     }
 

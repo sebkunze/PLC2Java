@@ -1,11 +1,11 @@
 package com.sebkun.plc2java.parser.objects.functions;
 
-import com.sebkun.plc2java.parser.objects.Function;
+import com.sebkun.plc2java.parser.objects.XMLFunction;
 
 /**
  * @author sebkun
  */
-public class Block extends Function {
+public class XMLBlock extends XMLFunction {
 
     public static final String ATTRIBUTE_INPUT_VARIABLES  = "inputVariables";
 
@@ -15,18 +15,18 @@ public class Block extends Function {
 
     public static final String ATTRIBUTE_REF_LOCAL_ID     = "refLocalId";
 
-    public Block(Integer localId, String typeName, Integer executionOrder) {
+    public XMLBlock(Integer localId, String typeName, Integer executionOrder) {
         super(localId, typeName, executionOrder);
     }
 
     @Override
     public boolean equals(Object obj) {
 
-        if (!(obj instanceof Block)) {
+        if (!(obj instanceof XMLBlock)) {
             return false;
         }
 
-        Block b = (Block) obj;
+        XMLBlock b = (XMLBlock) obj;
 
         if (!this.localId.equals(b.getLocalId())
                 || !this.typeName.equals(b.getTypeName())

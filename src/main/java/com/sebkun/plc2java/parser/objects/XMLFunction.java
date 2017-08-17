@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author sebkun
  */
-public abstract class Function {
+public abstract class XMLFunction {
 
     protected Integer localId;
 
@@ -20,7 +20,7 @@ public abstract class Function {
 
     protected Map<String, Integer> outputVariables;
 
-    public Function(Integer localId, String typeName, Integer executionOrderID) {
+    public XMLFunction(Integer localId, String typeName, Integer executionOrderID) {
 
         this.localId          = localId;
         this.typeName         = typeName;

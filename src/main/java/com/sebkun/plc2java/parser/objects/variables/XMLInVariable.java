@@ -1,24 +1,24 @@
 package com.sebkun.plc2java.parser.objects.variables;
 
-import com.sebkun.plc2java.parser.objects.Variable;
+import com.sebkun.plc2java.parser.objects.XMLVariable;
 
 /**
  * @author sebkun
  */
-public class InVariable extends Variable {
+public class XMLInVariable extends XMLVariable {
 
-    public InVariable(Integer localID, Integer executionOrder, Boolean negated) {
+    public XMLInVariable(Integer localID, Integer executionOrder, Boolean negated) {
         super(localID, executionOrder, negated);
     }
 
     @Override
     public boolean equals(Object obj) {
 
-        if(!(obj instanceof InVariable)) {
+        if(!(obj instanceof XMLInVariable)) {
             return false;
         }
 
-        InVariable v = (InVariable) obj;
+        XMLInVariable v = (XMLInVariable) obj;
 
         if(!this.localID.equals(v.getLocalID())
                 || !this.executionOrderID.equals(v.getExecutionOrderID())
