@@ -1,9 +1,10 @@
 package com.sebkun.plc2java.parser;
 
+import com.sebkun.plc2java.diagram.Diagram;
 import com.sebkun.plc2java.parser.handler.SAXHandler;
+import com.sebkun.plc2java.parser.objects.Definition;
 import com.sebkun.plc2java.parser.objects.Function;
 import com.sebkun.plc2java.parser.objects.Variable;
-import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -15,12 +16,15 @@ import java.util.List;
 /**
  * @author sebkun
  */
-public class Parser {
+public class Document {
 
-    public Diagram parse(String path) {
+    List<Function>   functions;
 
-        List<Function> functions;
-        List<Variable> variables;
+    List<Variable>   variables;
+
+    List<Definition> definitions;
+
+    public Document(String path) {
 
         try {
 
@@ -34,19 +38,29 @@ public class Parser {
 
             parser.parse(stream, handler);
 
-            functions = handler.getFunctions();
-            variables = handler.getVariables();
+            functions  = handler.getFunctions();
+            variables  = handler.getVariables();
+            definitions = handler.getDefinitions();
 
         } catch (Exception e) {
 
             e.printStackTrace();
 
-            functions = new ArrayList<Function>();
-            variables = new ArrayList<Variable>();
-
+            functions  = new ArrayList<Function>();
+            variables  = new ArrayList<Variable>();
+            definitions = new ArrayList<Definition>();
         }
-
-        return new Diagram(functions, variables);
     }
 
+    public List<Function> getFunctions() {
+        return functions;
+    }
+
+    public List<Variable> getVariables() {
+        return variables;
+    }
+
+    public List<Definition> getDefinitions() {
+        return definitions;
+    }
 }
