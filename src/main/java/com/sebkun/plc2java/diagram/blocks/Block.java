@@ -1,25 +1,21 @@
 package com.sebkun.plc2java.diagram.blocks;
 
+import java.util.Map;
+
 /**
  * @author sebkun
  */
-public abstract class FunctionBlock implements Comparable<FunctionBlock> {
+public abstract class Block {
 
     protected int executionOrderId;
 
-    public FunctionBlock(int executionOrderId) {
+    public Block(int executionOrderId) {
         this.executionOrderId = executionOrderId;
-    }
-
-    public abstract void execute();
-
-    @Override
-    public int compareTo(FunctionBlock func) {
-
-        return Integer.valueOf(this.getExecutionOrderId()).compareTo(func.getExecutionOrderId());
     }
 
     public int getExecutionOrderId() {
         return executionOrderId;
     }
+
+    public abstract Map<String, Integer> execute();
 }
