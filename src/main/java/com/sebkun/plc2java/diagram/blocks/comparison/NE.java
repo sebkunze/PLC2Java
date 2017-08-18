@@ -2,6 +2,7 @@ package com.sebkun.plc2java.diagram.blocks.comparison;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
 
@@ -18,12 +19,15 @@ public class NE extends FunctionBlock {
 
     public NE(int executionOrderId) {
         super(executionOrderId);
-
-
     }
 
     @Override
     public Map<String, Connector> execute() {
-        return null;
+
+        Connector out = getInputs().get(NE.INPUT_IN1).ne(getInputs().get(NE.INPUT_IN2));
+
+        updateOutput(NE.OUTPUT_OUT, out);
+
+        return outputs;
     }
 }
