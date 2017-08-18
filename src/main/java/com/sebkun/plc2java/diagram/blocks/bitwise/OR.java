@@ -44,7 +44,7 @@ public class OR extends FunctionBlock {
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(OR.INPUT_IN_PATTERN + String.valueOf(i));
+                Connector in = getInputs().get(OR.INPUT_IN_PATTERN + String.valueOf(i + 1));
 
                 con = con.or(in);
             }

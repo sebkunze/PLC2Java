@@ -44,7 +44,7 @@ public class XOR extends FunctionBlock {
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(XOR.INPUT_IN_PATTERN + String.valueOf(i));
+                Connector in = getInputs().get(XOR.INPUT_IN_PATTERN + String.valueOf(i + 1));
 
                 con = (con.and(in.not())).or(in.and(con.not()));
             }

@@ -45,7 +45,7 @@ public class AND extends FunctionBlock {
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(AND.INPUT_IN_PATTERN + String.valueOf(i));
+                Connector in = getInputs().get(AND.INPUT_IN_PATTERN + String.valueOf(i + 1));
 
                 con = con.and(in);
             }
