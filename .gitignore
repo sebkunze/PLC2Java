@@ -1,5 +1,9 @@
 # InteliJ IDEA
+.idea
 *.iml
 
 # build
 out/
+
+# binaries
+target/
