@@ -1,6 +1,7 @@
 package com.sebkun.plc2java.diagram.blocks.bitShift;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
+import com.sebkun.plc2java.diagram.connector.Connector;
 
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class SHR extends FunctionBlock {
         super(executionOrderId);
     }
     @Override
-    public Map<String, Integer> execute() {
+    public Map<String, Connector> execute() {
         return null;
     }
 }
