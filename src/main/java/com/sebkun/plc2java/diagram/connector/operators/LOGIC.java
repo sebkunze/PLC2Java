@@ -7,12 +7,12 @@ import com.sebkun.plc2java.diagram.connector.Connector;
  */
 public interface LOGIC {
 
-    Connector and(Connector c)
+    Connector<Boolean> and(Connector c)
             throws NonSupportedOperationException;
 
-    Connector or(Connector c)
+    Connector<Boolean> or(Connector c)
             throws NonSupportedOperationException;
 
-    Connector not()
+    Connector<Boolean> not()
             throws NonSupportedOperationException;
 }
