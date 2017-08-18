@@ -37,8 +37,8 @@ public class AND extends FunctionBlock {
     public Map<String, Connector> execute() {
 
         this.updateOutput(
-                OR.OUTPUT_OUT,
-                inputs.values().stream().reduce(outputs.get(OUTPUT_OUT), (x, y) -> x.and(y)));
+                AND.OUTPUT_OUT,
+                inputs.values().stream().reduce(inputs.get("IN1"), (x, y) -> x.and(y)));
 
         return outputs;
     }

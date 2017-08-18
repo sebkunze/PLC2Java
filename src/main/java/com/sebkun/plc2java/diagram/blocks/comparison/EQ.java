@@ -30,8 +30,8 @@ public class EQ extends FunctionBlock {
     @Override
     public Map<String, Connector> execute() {
 
-        this.updateOutput(EQ.OUTPUT_OUT,
-                this.inputs.values().stream().reduce(inputs.get("IN1"), (x, y) -> x.eq(y)));
+//        this.updateOutput(EQ.OUTPUT_OUT,
+//                this.inputs.values().stream().
 
         return outputs;
     }

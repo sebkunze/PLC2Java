@@ -2,6 +2,7 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.List;
 import java.util.Map;
@@ -32,10 +33,16 @@ public class OR extends FunctionBlock {
     @Override
     public Map<String, Connector> execute() {
 
-        this.updateOutput(
-                OR.OUTPUT_OUT,
-                this.inputs.values().stream().reduce(this.outputs.get(OUTPUT_OUT), (x, y) -> x.or(y)));
+        if (getInputs().size() == 1) {
+
+            updateOutput(OR.OUTPUT_OUT, new BOOL(true));
+        } else {
+
+            updateOutput(OR.OUTPUT_OUT,inputs.values().stream().reduce(inputs.get("IN1"), (x, y) -> x.or(y)));
+        }
 
         return outputs;
     }
+
+
 }

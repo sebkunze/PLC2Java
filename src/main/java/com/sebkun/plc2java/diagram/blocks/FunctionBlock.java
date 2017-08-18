@@ -1,5 +1,6 @@
 package com.sebkun.plc2java.diagram.blocks;
 
+import com.sebkun.plc2java.diagram.blocks.bitwise.XOR;
 import com.sebkun.plc2java.diagram.connector.Connector;
 
 import java.util.HashMap;
@@ -59,5 +60,23 @@ public abstract class FunctionBlock {
 
     public void setOutput(String key, Connector output) {
         this.outputs.put(key, output);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof FunctionBlock)) {
+            return false;
+        }
+
+        FunctionBlock block = (FunctionBlock) obj;
+
+        if (this.getExecutionOrderId() == block.getExecutionOrderId()
+                && this.getInputs() == block.getInputs()
+                && this.getOutputs() == block.getOutputs()) {
+            return true;
+        }
+
+        return false;
     }
 }
