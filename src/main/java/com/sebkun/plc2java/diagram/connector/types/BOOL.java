@@ -48,6 +48,21 @@ public class BOOL extends Connector<Boolean> {
     }
 
     @Override
+    public Connector eq(Connector c)
+            throws NonSupportedOperationException {
+
+        if (!(c instanceof BOOL)) {
+            throw new NonSupportedOperationException(
+                    String.format("operation not supported for type %s!", c.getClass().getSimpleName())
+            );
+        }
+
+        BOOL b = (BOOL) c;
+
+        return new BOOL(this.getValue() == b.getValue());
+    }
+
+    @Override
     public Connector ge(Connector c)
             throws NonSupportedOperationException {
 
@@ -77,5 +92,20 @@ public class BOOL extends Connector<Boolean> {
 
         throw new NonSupportedOperationException(
                 String.format("operation not supported for type %s!", getClass().getSimpleName()));
+    }
+
+    @Override
+    public Connector ne(Connector c)
+            throws NonSupportedOperationException {
+
+        if (!(c instanceof BOOL)) {
+            throw new NonSupportedOperationException(
+                    String.format("operation not supported for type %s!", c.getClass().getSimpleName())
+            );
+        }
+
+        BOOL b = (BOOL) c;
+
+        return new BOOL(this.getValue() != b.getValue());
     }
 }

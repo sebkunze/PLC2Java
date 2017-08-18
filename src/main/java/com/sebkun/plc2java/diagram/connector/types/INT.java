@@ -38,6 +38,21 @@ public class INT extends Connector<Integer> {
     }
 
     @Override
+    public Connector eq(Connector c)
+            throws NonSupportedOperationException {
+
+        if (!(c instanceof INT)) {
+            throw new NonSupportedOperationException(
+                    String.format("operation not supported for type %s!", c.getClass().getSimpleName())
+            );
+        }
+
+        INT i = (INT) c;
+
+        return new BOOL(this.getValue() == i.getValue());
+    }
+
+    @Override
     public Connector ge(Connector c)
             throws NonSupportedOperationException {
 
@@ -95,5 +110,20 @@ public class INT extends Connector<Integer> {
         INT i = (INT) c;
 
         return new BOOL(this.getValue() < i.getValue());
+    }
+
+    @Override
+    public Connector ne(Connector c)
+            throws NonSupportedOperationException {
+
+        if (!(c instanceof INT)) {
+            throw new NonSupportedOperationException(
+                    String.format("operation not supported for type %s!", c.getClass().getSimpleName())
+            );
+        }
+
+        INT i = (INT) c;
+
+        return new BOOL(this.getValue() != i.getValue());
     }
 }
