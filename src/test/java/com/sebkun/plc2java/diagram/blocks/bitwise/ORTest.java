@@ -1,6 +1,5 @@
 package com.sebkun.plc2java.diagram.blocks.bitwise;
 
-
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 import org.junit.Test;
@@ -8,68 +7,56 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * @author sebkun
  */
-public class ANDTest {
-
-
-    @Test
-    public void testAND_0() {
-
-        Connector in1 = new BOOL(false);
-        Connector in2 = new BOOL(false);
-
-        List<Connector> ins = Arrays.asList(in1, in2);
-
-        Connector out = new BOOL(false);
-
-        AND and = new AND(0, ins, out);
-
-        and.execute();
-
-        assertThat(out.getValue(), equalTo(false));
-    }
+public class ORTest {
 
     @Test
-    public void testAND_1() {
+    public void testOR_0() {
 
         Connector in1 = new BOOL(true);
-        Connector in2 = new BOOL(false);
 
-        List<Connector> ins = Arrays.asList(in1, in2);
+        List<Connector> ins = Arrays.asList(in1);
 
         Connector out = new BOOL(false);
 
-        AND and = new AND(0, ins, out);
+        OR block = new OR(0, ins, out);
 
-        and.execute();
+        block.execute();
 
-        assertThat(out.getValue(), equalTo(false));
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testAND_2() {
+    public void testOR_1() {
 
         Connector in1 = new BOOL(false);
-        Connector in2 = new BOOL(true);
 
-        List<Connector> ins = Arrays.asList(in1, in2);
+        List<Connector> ins = Arrays.asList(in1);
 
         Connector out = new BOOL(false);
 
-        AND and = new AND(0, ins, out);
+        OR block = new OR(0, ins, out);
 
-        and.execute();
+        block.execute();
 
-        assertThat(out.getValue(), equalTo(false));
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testAND_3() {
+    public void testOR_2() {
 
         Connector in1 = new BOOL(true);
         Connector in2 = new BOOL(true);
@@ -78,11 +65,58 @@ public class ANDTest {
 
         Connector out = new BOOL(false);
 
-        AND and = new AND(0, ins, out);
+        OR block = new OR(0, ins, out);
 
-        and.execute();
+        block.execute();
 
-        assertThat(out.getValue(), equalTo(true));
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
+    @Test
+    public void testOR_3() {
+
+        Connector in1 = new BOOL(true);
+        Connector in2 = new BOOL(true);
+        Connector in3 = new BOOL(true);
+
+        List<Connector> ins = Arrays.asList(in1, in2, in3);
+
+        Connector out = new BOOL(false);
+
+        OR block = new OR(0, ins, out);
+
+        block.execute();
+
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
+    }
+
+    @Test
+    public void testOR_4() {
+
+        Connector in1 = new BOOL(false);
+        Connector in2 = new BOOL(false);
+        Connector in3 = new BOOL(false);
+
+        List<Connector> ins = Arrays.asList(in1, in2, in3);
+
+        Connector out = new BOOL(true);
+
+        OR block = new OR(0, ins, out);
+
+        block.execute();
+
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(false));
+    }
 }
