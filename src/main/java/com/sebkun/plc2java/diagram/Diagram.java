@@ -1,32 +1,31 @@
-package com.sebkun.plc2java.parser;
+package com.sebkun.plc2java.diagram;
 
-import com.sebkun.plc2java.parser.objects.Definition;
-import com.sebkun.plc2java.parser.objects.Function;
-import com.sebkun.plc2java.parser.objects.Variable;
+import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
+import com.sebkun.plc2java.parser.XMLDocument;
+import com.sebkun.plc2java.parser.objects.XMLFunction;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author sebkun
  */
-public class Diagram implements Comparable {
+public class Diagram {
 
+    private List<FunctionBlock> blocks;
 
+    public Diagram(XMLDocument document) {
 
-    public Diagram(List<Function> functions, List<Variable> variables, List<Definition> definitions) {
-
-        this.initialiseBlocks(functions, variables, definitions);
+        this.initialiseBlocks(document);
     }
 
-    private void initialiseBlocks(List<Function> functions, List<Variable> variables, List<Definition> defintions) {
+    private void initialiseBlocks(XMLDocument document) {
 
-        for (Function func : functions) {
+        for (XMLFunction func : document.getFunctions()) {
 
             for (Map.Entry<String, Integer> e : func.getInputVariables().entrySet()) {
-                String key      = e.getKey();
+                String  key     = e.getKey();
                 Integer localID = e.getValue();
 
 
@@ -34,13 +33,12 @@ public class Diagram implements Comparable {
 
         }
 
-
+        blocks.sort(Comparator.comparing(FunctionBlock::getExecutionOrderId));
     }
 
+    public void execute() {
 
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+
     }
 }
