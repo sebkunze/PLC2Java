@@ -2,6 +2,7 @@ package com.sebkun.plc2java.diagram.blocks;
 
 import com.sebkun.plc2java.diagram.blocks.bitwise.XOR;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,8 @@ public abstract class FunctionBlock {
         return executionOrderId;
     }
 
-    public abstract Map<String, Connector> execute();
+    public abstract Map<String, Connector> execute()
+            throws NonSupportedOperationException;
 
     public Map<String, Connector> getInputs() {
         return inputs;

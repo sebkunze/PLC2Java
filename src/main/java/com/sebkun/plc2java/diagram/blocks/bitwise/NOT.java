@@ -2,6 +2,7 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 
 import java.util.Map;
 
@@ -27,11 +28,12 @@ public class NOT extends FunctionBlock {
     }
 
     @Override
-    public Map<String, Connector> execute() {
+    public Map<String, Connector> execute()
+            throws NonSupportedOperationException {
 
-        this.updateOutput(
-                NOT.OUTPUT_OUT,
-                inputs.get(INPUT_IN).not());
+        Connector con = inputs.get(INPUT_IN).not();
+
+        this.updateOutput(NOT.OUTPUT_OUT, con);
 
         return outputs;
     }

@@ -1,14 +1,13 @@
 package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
+import com.sebkun.plc2java.diagram.blocks.comparison.EQ;
 import com.sebkun.plc2java.diagram.connector.Connector;
-import com.sebkun.plc2java.diagram.connector.operators.LOGIC;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.BinaryOperator;
-import java.util.stream.Stream;
 
 /**
  * @author sebkun
@@ -34,12 +33,24 @@ public class AND extends FunctionBlock {
     }
 
     @Override
-    public Map<String, Connector> execute() {
+    public Map<String, Connector> execute()
+            throws NonSupportedOperationException {
 
-        this.updateOutput(
-                AND.OUTPUT_OUT,
-                inputs.values().stream().reduce(inputs.get("IN1"), (x, y) -> x.and(y)));
+        if (getInputs().size() < 2) {
 
+            updateOutput(AND.OUTPUT_OUT, new BOOL(true));
+        } else {
+
+            Connector con = getInputs().get("IN1");
+
+            for (int i = 1; i < getInputs().size(); i++) {
+
+                Connector in = getInputs().get(AND.INPUT_IN_PATTERN + String.valueOf(i));
+
+                con = con.and(in);
+            }
+            updateOutput(EQ.OUTPUT_OUT, con);
+        }
         return outputs;
     }
 }

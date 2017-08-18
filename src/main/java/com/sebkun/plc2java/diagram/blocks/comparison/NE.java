@@ -2,6 +2,7 @@ package com.sebkun.plc2java.diagram.blocks.comparison;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
@@ -22,7 +23,8 @@ public class NE extends FunctionBlock {
     }
 
     @Override
-    public Map<String, Connector> execute() {
+    public Map<String, Connector> execute()
+            throws NonSupportedOperationException {
 
         Connector out = getInputs().get(NE.INPUT_IN1).ne(getInputs().get(NE.INPUT_IN2));
 

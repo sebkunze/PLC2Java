@@ -7,9 +7,12 @@ import com.sebkun.plc2java.diagram.connector.Connector;
  */
 public interface LOGIC {
 
-    Connector and(Connector c);
+    Connector and(Connector c)
+            throws NonSupportedOperationException;
 
-    Connector or(Connector c);
+    Connector or(Connector c)
+            throws NonSupportedOperationException;
 
-    Connector not();
+    Connector not()
+            throws NonSupportedOperationException;
 }

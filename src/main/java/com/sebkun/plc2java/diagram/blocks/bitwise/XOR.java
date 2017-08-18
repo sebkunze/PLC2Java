@@ -2,11 +2,11 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.BinaryOperator;
 
 /**
  * @author sebkun
@@ -32,16 +32,24 @@ public class XOR extends FunctionBlock {
     }
 
     @Override
-    public Map<String, Connector> execute() {
+    public Map<String, Connector> execute()
+            throws NonSupportedOperationException {
 
-        if (getInputs().size() == 1) {
+        if (getInputs().size() < 2) {
 
-            updateOutput(OR.OUTPUT_OUT, new BOOL(true));
+            updateOutput(XOR.OUTPUT_OUT, new BOOL(true));
         } else {
 
-            updateOutput(XOR.OUTPUT_OUT, inputs.values().stream().reduce(inputs.get("IN1").not(), (p, q) -> ((p.and(q.not())).or(q.and(p.not())))));
-        }
+            Connector con = getInputs().get("IN1");
 
+            for (int i = 1; i < getInputs().size(); i++) {
+
+                Connector in = getInputs().get(XOR.INPUT_IN_PATTERN + String.valueOf(i));
+
+                con = (con.and(in.not())).or(in.and(con.not()));
+            }
+            updateOutput(XOR.OUTPUT_OUT, con);
+        }
         return outputs;
     }
 }

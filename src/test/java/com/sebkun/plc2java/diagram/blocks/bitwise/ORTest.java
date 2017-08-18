@@ -1,6 +1,7 @@
 package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.connector.Connector;
+import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 import org.junit.Test;
 
@@ -16,7 +17,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ORTest {
 
     @Test
-    public void testOR_0() {
+    public void testOR_0()
+            throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(true);
 
@@ -36,7 +38,8 @@ public class ORTest {
     }
 
     @Test
-    public void testOR_1() {
+    public void testOR_1()
+            throws NonSupportedOperationException  {
 
         Connector in1 = new BOOL(false);
 
@@ -56,7 +59,8 @@ public class ORTest {
     }
 
     @Test
-    public void testOR_2() {
+    public void testOR_2()
+            throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(true);
         Connector in2 = new BOOL(true);
@@ -77,7 +81,8 @@ public class ORTest {
     }
 
     @Test
-    public void testOR_3() {
+    public void testOR_3()
+            throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(true);
         Connector in2 = new BOOL(true);
@@ -99,7 +104,8 @@ public class ORTest {
     }
 
     @Test
-    public void testOR_4() {
+    public void testOR_4()
+            throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(false);
         Connector in2 = new BOOL(false);
