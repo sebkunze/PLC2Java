@@ -42,6 +42,27 @@ public class ANDTest {
     public void testAND_1()
             throws NonSupportedOperationException {
 
+        Connector in1 = new BOOL(false);
+
+        List<Connector> ins = Arrays.asList(in1);
+
+        Connector out = new BOOL(false);
+
+        AND block = new AND(0, ins, out);
+
+        block.execute();
+
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(AND.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(AND.OUTPUT_OUT).getValue(), equalTo(true));
+    }
+
+    @Test
+    public void testAND_2()
+            throws NonSupportedOperationException {
+
         Connector in1 = new BOOL(true);
         Connector in2 = new BOOL(true);
 
@@ -61,7 +82,7 @@ public class ANDTest {
     }
 
     @Test
-    public void testAND_2()
+    public void testAND_3()
             throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(true);
@@ -84,7 +105,7 @@ public class ANDTest {
     }
 
     @Test
-    public void testAND_3()
+    public void testAND_4()
             throws NonSupportedOperationException {
 
         Connector in1 = new BOOL(true);
