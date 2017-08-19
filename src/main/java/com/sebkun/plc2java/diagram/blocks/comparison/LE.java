@@ -49,7 +49,7 @@ public class LE extends FunctionBlock {
                 Connector in = getInputs().get(LE.INPUT_IN_PATTERN + String.valueOf(i + 1));
 
                 // check if pairs is not less equals.
-                if (!tmp.gt(in).getValue()) {
+                if (!tmp.le(in).getValue()) {
 
                     // update output.
                     out = new BOOL(false);
