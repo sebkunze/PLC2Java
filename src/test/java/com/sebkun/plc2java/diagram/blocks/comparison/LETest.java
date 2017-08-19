@@ -15,10 +15,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * @author sebkun
  */
-public class EQTest {
+public class LETest {
 
     @Test
-    public void testEQ_0()
+    public void testLE_0()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(0);
@@ -27,19 +27,19 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testEQ_1()
+    public void testLE_1()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(1);
@@ -48,19 +48,19 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testEQ_2()
+    public void testLE_2()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(0);
@@ -70,19 +70,19 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testEQ_3()
+    public void testLE_3()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(1);
@@ -92,19 +92,19 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(false));
     }
 
     @Test
-    public void testEQ_4()
+    public void testLE_4()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(0);
@@ -114,42 +114,19 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
     }
 
     @Test
-    public void testEQ_5()
-            throws NonSupportedOperationException {
-
-        Connector in1 = new INT(0);
-        Connector in2 = new INT(1);
-        Connector in3 = new INT(0);
-
-        List<Connector> ins = Arrays.asList(in1, in2, in3);
-
-        Connector out = new BOOL(false);
-
-        EQ block = new EQ(0, ins, out);
-
-        block.execute();
-
-        assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
-
-        assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
-    }
-
-    @Test
-    public void testEQ_6()
+    public void testLE_5()
             throws NonSupportedOperationException {
 
         Connector in1 = new INT(0);
@@ -158,16 +135,62 @@ public class EQTest {
 
         List<Connector> ins = Arrays.asList(in1, in2, in3);
 
-        Connector out = new BOOL(false);
+        Connector out = new BOOL(true);
 
-        EQ block = new EQ(0, ins, out);
+        LE block = new LE(0, ins, out);
 
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
+    }
+
+    @Test
+    public void testLE_6()
+            throws NonSupportedOperationException {
+
+        Connector in1 = new INT(0);
+        Connector in2 = new INT(1);
+        Connector in3 = new INT(1);
+
+        List<Connector> ins = Arrays.asList(in1, in2, in3);
+
+        Connector out = new BOOL(false);
+
+        LE block = new LE(0, ins, out);
+
+        block.execute();
+
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
+    }
+
+    @Test
+    public void testLE_7()
+            throws NonSupportedOperationException {
+
+        Connector in1 = new INT(0);
+        Connector in2 = new INT(1);
+        Connector in3 = new INT(2);
+
+        List<Connector> ins = Arrays.asList(in1, in2, in3);
+
+        Connector out = new BOOL(false);
+
+        LE block = new LE(0, ins, out);
+
+        block.execute();
+
+        assertThat("block does not update output connector.",
+                block.getOutputs().get(LE.OUTPUT_OUT), equalTo(out));
+
+        assertThat("block does not perform operation correctly.",
+                block.getOutputs().get(LE.OUTPUT_OUT).getValue(), equalTo(true));
     }
 }
