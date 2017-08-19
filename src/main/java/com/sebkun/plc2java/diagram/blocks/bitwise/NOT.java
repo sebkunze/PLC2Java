@@ -14,7 +14,7 @@ public class NOT extends FunctionBlock {
 
     // --- INPUTS --
 
-    private static final String INPUT_IN  = "IN";
+    private static final String INPUT_IN  = "IN1";
 
     // --- OUTPUTS ---
 

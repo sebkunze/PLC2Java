@@ -21,7 +21,7 @@ public class LT extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN";
+    private static final String INPUT_IN_PATTERN = "IN%d";
 
     public LT(int executionOrderId, List<Connector> inputList, Connector out) {
         super(executionOrderId);
@@ -29,6 +29,16 @@ public class LT extends FunctionBlock {
         this.setInputList(INPUT_IN_PATTERN, inputList);
 
         this.setOutput(OUTPUT_OUT, out);
+    }
+
+    public BOOL getOutput() {
+
+        return (BOOL) getOutputs().get(LT.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override
@@ -42,11 +52,11 @@ public class LT extends FunctionBlock {
 
             Connector<Boolean> out = new BOOL(true);
 
-            Connector tmp = getInputs().get("IN1");
+            Connector tmp = getInputs().get(String.format(LT.INPUT_IN_PATTERN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(LT.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(LT.INPUT_IN_PATTERN, i + 1));
 
                 // check if pairs is not less than.
                 if (!tmp.lt(in).getValue()) {

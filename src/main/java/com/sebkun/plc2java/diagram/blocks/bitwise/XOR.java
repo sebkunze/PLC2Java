@@ -21,12 +21,12 @@ public class XOR extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN";
+    private static final String PATTERN_INPUT_IN = "IN%d";
 
     public XOR(int executionOrderId, List<Connector> inputList, Connector out) {
         super(executionOrderId);
 
-        this.setInputList(INPUT_IN_PATTERN, inputList);
+        this.setInputList(PATTERN_INPUT_IN, inputList);
 
         this.setOutput(OUTPUT_OUT, out);
     }
@@ -50,11 +50,11 @@ public class XOR extends FunctionBlock {
             updateOutput(XOR.OUTPUT_OUT, new BOOL(true));
         } else {
 
-            Connector con = getInputs().get("IN1");
+            Connector con = getInputs().get(String.format(XOR.PATTERN_INPUT_IN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(XOR.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(XOR.PATTERN_INPUT_IN, i + 1));
 
                 con = (con.and(in.not())).or(in.and(con.not()));
             }

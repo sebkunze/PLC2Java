@@ -1,6 +1,7 @@
 package com.sebkun.plc2java.diagram.blocks.comparison;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
+import com.sebkun.plc2java.diagram.blocks.bitwise.AND;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
@@ -21,7 +22,7 @@ public class GE extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN";
+    private static final String INPUT_IN_PATTERN = "IN%d";
 
     public GE(int executionOrderId, List<Connector> inputList, Connector out) {
         super(executionOrderId);
@@ -31,9 +32,14 @@ public class GE extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
-    public Connector getOutput() {
+    public BOOL getOutput() {
 
-        return getOutputs().get(GE.OUTPUT_OUT);
+        return (BOOL) getOutputs().get(GE.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override
@@ -47,11 +53,11 @@ public class GE extends FunctionBlock {
 
             Connector<Boolean> out = new BOOL(true);
 
-            Connector tmp = getInputs().get("IN1");
+            Connector tmp = getInputs().get(String.format(GE.INPUT_IN_PATTERN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(GE.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(GE.INPUT_IN_PATTERN, i + 1));
 
                 // check if pairs is not greater equals.
                 if (!tmp.ge(in).getValue()) {

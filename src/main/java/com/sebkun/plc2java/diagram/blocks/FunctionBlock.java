@@ -45,7 +45,7 @@ public abstract class FunctionBlock {
 
         for (int i = 0; i < values.size(); i++) {
 
-            String     key  = keyPrefix + String.valueOf(i + 1);
+            String     key  = String.format(keyPrefix, i + 1);
             Connector value = values.get(i);
 
             inputs.put(key, value);

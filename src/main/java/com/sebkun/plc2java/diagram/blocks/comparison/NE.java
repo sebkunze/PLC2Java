@@ -3,6 +3,7 @@ package com.sebkun.plc2java.diagram.blocks.comparison;
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
+import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
 
@@ -24,6 +25,16 @@ public class NE extends FunctionBlock {
         this.setInput(INPUT_IN2, in2);
 
         this.setOutput(OUTPUT_OUT, out);
+    }
+
+    public BOOL getOutput() {
+
+        return (BOOL) getOutputs().get(NE.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override

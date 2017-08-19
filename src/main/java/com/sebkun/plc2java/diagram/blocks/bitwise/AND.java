@@ -22,12 +22,12 @@ public class AND extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN";
+    private static final String PATTERN_INPUT_IN = "IN%d";
 
     public AND(int executionOrderID, List<Connector> ins, Connector out) {
         super(executionOrderID);
 
-        this.setInputList(INPUT_IN_PATTERN, ins);
+        this.setInputList(PATTERN_INPUT_IN, ins);
 
         this.setOutput(OUTPUT_OUT, out);
     }
@@ -55,7 +55,7 @@ public class AND extends FunctionBlock {
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(AND.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(AND.PATTERN_INPUT_IN, i + 1));
 
                 con = con.and(in);
             }

@@ -21,7 +21,7 @@ public class EQ extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN"; // TODO: Implement pattern.
+    private static final String INPUT_IN_PATTERN = "IN%d";
 
     public EQ(int executionOrderId, List<Connector> inputList, Connector out) { // TODO: add constructor without executionID
         super(executionOrderId);
@@ -29,6 +29,16 @@ public class EQ extends FunctionBlock {
         this.setInputList(INPUT_IN_PATTERN, inputList);
 
         this.setOutput(OUTPUT_OUT, out);
+    }
+
+    public BOOL getOutput() {
+
+        return (BOOL) this.getOutputs().get(EQ.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override
@@ -42,11 +52,11 @@ public class EQ extends FunctionBlock {
 
             Connector<Boolean> out = new BOOL(true);
 
-            Connector tmp = getInputs().get("IN1");
+            Connector tmp = getInputs().get(String.format(EQ.INPUT_IN_PATTERN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(EQ.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(EQ.INPUT_IN_PATTERN, i + 1));
 
                 // check if pairs are non-equivalent.
                 if (!tmp.eq(in).getValue()) {

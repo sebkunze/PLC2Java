@@ -34,7 +34,7 @@ public class ORTest {
                 block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ORTest {
                 block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class ORTest {
                 block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class ORTest {
                 block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -123,6 +123,6 @@ public class ORTest {
                 block.getOutputs().get(OR.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(OR.OUTPUT_OUT).getValue(), equalTo(false));
+                 block.getOutputValue(), equalTo(false));
     }
 }

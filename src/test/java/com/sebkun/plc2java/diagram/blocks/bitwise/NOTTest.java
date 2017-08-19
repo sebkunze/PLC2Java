@@ -28,7 +28,7 @@ public class NOTTest {
                 block.getOutputs().get(NOT.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(NOT.OUTPUT_OUT).getValue(), equalTo(false));
+                 block.getOutputValue(), equalTo(false));
     }
 
     @Test
@@ -46,6 +46,6 @@ public class NOTTest {
                 block.getOutputs().get(NOT.OUTPUT_OUT), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(NOT.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 }

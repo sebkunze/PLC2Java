@@ -32,10 +32,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -53,10 +53,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -75,10 +75,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -97,10 +97,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
+                block.getOutputValue(), equalTo(false));
     }
 
     @Test
@@ -119,10 +119,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
+                block.getOutputValue(), equalTo(false));
     }
 
     @Test
@@ -142,10 +142,10 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(false));
+                 block.getOutputValue(), equalTo(false));
     }
 
     @Test
@@ -165,9 +165,9 @@ public class EQTest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(EQ.OUTPUT_OUT), equalTo(out));
+                block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(EQ.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 }

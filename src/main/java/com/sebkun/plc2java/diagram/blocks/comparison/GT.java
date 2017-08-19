@@ -21,7 +21,7 @@ public class GT extends FunctionBlock {
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN";
+    private static final String INPUT_IN_PATTERN = "IN%d";
 
     public GT(int executionOrderId, List<Connector> inputList, Connector out) {
         super(executionOrderId);
@@ -31,7 +31,15 @@ public class GT extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
+    public BOOL getOutput() {
 
+        return (BOOL) getOutputs().get(GT.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
+    }
 
     @Override
     public Map<String, Connector> execute()
@@ -44,11 +52,11 @@ public class GT extends FunctionBlock {
 
             Connector<Boolean> out = new BOOL(true);
 
-            Connector tmp = getInputs().get("IN1");
+            Connector tmp = getInputs().get(String.format(GT.INPUT_IN_PATTERN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(GT.INPUT_IN_PATTERN + String.valueOf(i + 1));
+                Connector in = getInputs().get(String.format(GT.INPUT_IN_PATTERN, i + 1));
 
                 // check if pairs is not greater than.
                 if (!tmp.gt(in).getValue()) {

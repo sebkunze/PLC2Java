@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Created by sebkun on 2017-08-19.
+ * @author sebkun
  */
 public class NETest {
 
@@ -31,10 +31,10 @@ public class NETest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(NE.OUTPUT_OUT), equalTo(out));
+                 block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(NE.OUTPUT_OUT).getValue(), equalTo(false));
+                 block.getOutputValue(), equalTo(false));
     }
 
     @Test
@@ -51,10 +51,10 @@ public class NETest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(NE.OUTPUT_OUT), equalTo(out));
+                 block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(NE.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 
     @Test
@@ -71,9 +71,9 @@ public class NETest {
         block.execute();
 
         assertThat("block does not update output connector.",
-                block.getOutputs().get(NE.OUTPUT_OUT), equalTo(out));
+                 block.getOutput(), equalTo(out));
 
         assertThat("block does not perform operation correctly.",
-                block.getOutputs().get(NE.OUTPUT_OUT).getValue(), equalTo(true));
+                 block.getOutputValue(), equalTo(true));
     }
 }
