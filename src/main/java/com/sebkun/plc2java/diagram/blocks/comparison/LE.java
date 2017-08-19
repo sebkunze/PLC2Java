@@ -38,15 +38,29 @@ public class LE extends FunctionBlock {
             updateOutput(LE.OUTPUT_OUT, new BOOL(true));
         } else {
 
-            Connector con = getInputs().get("IN1");
+            Connector<Boolean> out = new BOOL(true);
+
+            Connector tmp = getInputs().get("IN1");
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(LE.INPUT_IN_PATTERN + String.valueOf(i));
+                Connector in = getInputs().get(LE.INPUT_IN_PATTERN + String.valueOf(i + 1));
 
-                con = con.le(in);
+                // check if pairs is not less equals.
+                if (!tmp.gt(in).getValue()) {
+
+                    // update output.
+                    out = new BOOL(false);
+
+                    // stop iterating input pairs.
+                    break;
+                }
+
+                // continue with next pair of inputs.
+                tmp = in;
             }
-            updateOutput(LE.OUTPUT_OUT, con);
+
+            updateOutput(LE.OUTPUT_OUT, out);
         }
         return outputs;
     }
