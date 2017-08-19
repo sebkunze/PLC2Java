@@ -8,9 +8,9 @@ import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationExce
  */
 public class INT extends Connector<Integer> {
 
-    public INT(Integer i) {
+    public INT(Integer value) {
 
-        this.setValue(i);
+        this.setValue(value);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() <= i.getValue());
+        return new BOOL(this.getValue() >= i.getValue());
     }
 
     @Override
