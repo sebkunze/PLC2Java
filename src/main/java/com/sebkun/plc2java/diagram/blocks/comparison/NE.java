@@ -3,7 +3,6 @@ package com.sebkun.plc2java.diagram.blocks.comparison;
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
-import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
 
@@ -18,8 +17,13 @@ public class NE extends FunctionBlock {
 
     public static final String OUTPUT_OUT = "OUT";
 
-    public NE(int executionOrderId) {
+    public NE(int executionOrderId, Connector in1, Connector in2, Connector out) {
         super(executionOrderId);
+
+        this.setInput(INPUT_IN1, in1);
+        this.setInput(INPUT_IN2, in2);
+
+        this.setOutput(OUTPUT_OUT, out);
     }
 
     @Override

@@ -23,10 +23,12 @@ public class LT extends FunctionBlock {
 
     private static final String INPUT_IN_PATTERN = "IN";
 
-    public LT(int executionOrderId, List<Connector> inputList) {
+    public LT(int executionOrderId, List<Connector> inputList, Connector out) {
         super(executionOrderId);
 
         this.setInputList(INPUT_IN_PATTERN, inputList);
+
+        this.setOutput(OUTPUT_OUT, out);
     }
 
     @Override
