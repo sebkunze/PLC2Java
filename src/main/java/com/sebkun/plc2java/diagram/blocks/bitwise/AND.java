@@ -32,6 +32,11 @@ public class AND extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
+    public Connector getOutput() {
+
+        return this.getOutputs().get(AND.OUTPUT_OUT);
+    }
+
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {

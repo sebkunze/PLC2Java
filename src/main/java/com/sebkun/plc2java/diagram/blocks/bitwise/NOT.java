@@ -27,6 +27,11 @@ public class NOT extends FunctionBlock {
         setOutput(OUTPUT_OUT, out);
     }
 
+    public Connector getOutput() {
+
+        return getOutputs().get(NOT.OUTPUT_OUT);
+    }
+
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {

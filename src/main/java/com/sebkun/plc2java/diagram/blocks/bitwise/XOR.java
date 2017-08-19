@@ -31,6 +31,11 @@ public class XOR extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
+    public Connector getOutput() {
+
+        return getOutputs().get(XOR.OUTPUT_OUT);
+    }
+
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {

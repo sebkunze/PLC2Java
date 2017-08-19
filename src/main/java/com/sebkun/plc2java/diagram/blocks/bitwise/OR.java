@@ -31,6 +31,11 @@ public class OR extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
+    public Connector getOutput() {
+
+        return getOutputs().get(OR.OUTPUT_OUT);
+    }
+
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {
