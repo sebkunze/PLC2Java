@@ -31,9 +31,14 @@ public class OR extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
-    public Connector getOutput() {
+    public BOOL getOutput() {
 
-        return getOutputs().get(OR.OUTPUT_OUT);
+        return (BOOL) getOutputs().get(OR.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override

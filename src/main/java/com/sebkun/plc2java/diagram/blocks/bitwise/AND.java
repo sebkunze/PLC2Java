@@ -32,9 +32,14 @@ public class AND extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
-    public Connector getOutput() {
+    public BOOL getOutput() {
 
-        return this.getOutputs().get(AND.OUTPUT_OUT);
+        return (BOOL) this.getOutputs().get(AND.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override

@@ -31,9 +31,14 @@ public class XOR extends FunctionBlock {
         this.setOutput(OUTPUT_OUT, out);
     }
 
-    public Connector getOutput() {
+    public BOOL getOutput() {
 
-        return getOutputs().get(XOR.OUTPUT_OUT);
+        return (BOOL) getOutputs().get(XOR.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override

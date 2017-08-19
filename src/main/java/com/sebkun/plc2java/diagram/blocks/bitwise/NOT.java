@@ -3,6 +3,7 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
+import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
 
@@ -27,9 +28,14 @@ public class NOT extends FunctionBlock {
         setOutput(OUTPUT_OUT, out);
     }
 
-    public Connector getOutput() {
+    public BOOL getOutput() {
 
-        return getOutputs().get(NOT.OUTPUT_OUT);
+        return (BOOL) getOutputs().get(NOT.OUTPUT_OUT);
+    }
+
+    public Boolean getOutputValue() {
+
+        return getOutput().getValue();
     }
 
     @Override
