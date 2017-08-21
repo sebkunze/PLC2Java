@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class XMLDocument {
 
-    List<XMLFunction>   functions;
+    private List<XMLFunction>   functions;
 
-    List<XMLVariable>   variables;
+    private List<XMLVariable>   variables;
 
-    List<XMLDefinition> definitions;
+    private List<XMLDefinition> definitions;
 
     public XMLDocument(String path) {
 
@@ -37,17 +37,17 @@ public class XMLDocument {
 
             parser.parse(stream, handler);
 
-            functions  = handler.getFunctions();
-            variables  = handler.getVariables();
             definitions = handler.getDefinitions();
+            variables   = handler.getVariables();
+            functions   = handler.getFunctions();
 
         } catch (Exception e) {
 
             e.printStackTrace();
 
-            functions  = new ArrayList<XMLFunction>();
-            variables  = new ArrayList<XMLVariable>();
-            definitions = new ArrayList<XMLDefinition>();
+            definitions = new ArrayList<>();
+            variables   = new ArrayList<>();
+            functions   = new ArrayList<>();
         }
     }
 
