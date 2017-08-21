@@ -23,8 +23,8 @@ public class LE extends FunctionBlock {
 
     private static final String INPUT_IN_PATTERN = "IN%d";
 
-    public LE(int executionOrderId, List<Connector> inputList, Connector out) {
-        super(executionOrderId);
+    public LE(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+        super(localId, executionOrderId);
 
         this.setInputList(INPUT_IN_PATTERN, inputList);
 

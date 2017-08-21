@@ -18,8 +18,8 @@ public class TON extends FunctionBlock {
 
     public static final String OUTPUT_ET = "ET";
 
-    public TON(int executionOrderId) {
-        super(executionOrderId);
+    public TON(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
 
 
     }

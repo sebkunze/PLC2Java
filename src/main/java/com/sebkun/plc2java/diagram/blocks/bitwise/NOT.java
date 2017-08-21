@@ -20,8 +20,8 @@ public class NOT extends FunctionBlock {
 
     public static final String OUTPUT_OUT = "OUT";
 
-    public NOT(int executionOrderId, Connector in, Connector out) {
-        super(executionOrderId);
+    public NOT(int localId, int executionOrderId, Connector in, Connector out) {
+        super(localId, executionOrderId);
 
         setInput(INPUT_IN, in);
 

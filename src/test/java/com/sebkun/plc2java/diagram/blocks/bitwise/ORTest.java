@@ -26,7 +26,7 @@ public class ORTest {
 
         Connector out = new BOOL(false);
 
-        OR block = new OR(0, ins, out);
+        OR block = new OR(0, 0, ins, out);
 
         block.execute();
 
@@ -47,7 +47,7 @@ public class ORTest {
 
         Connector out = new BOOL(false);
 
-        OR block = new OR(0, ins, out);
+        OR block = new OR(0, 0, ins, out);
 
         block.execute();
 
@@ -69,7 +69,7 @@ public class ORTest {
 
         Connector out = new BOOL(false);
 
-        OR block = new OR(0, ins, out);
+        OR block = new OR(0, 0, ins, out);
 
         block.execute();
 
@@ -92,7 +92,7 @@ public class ORTest {
 
         Connector out = new BOOL(false);
 
-        OR block = new OR(0, ins, out);
+        OR block = new OR(0, 0, ins, out);
 
         block.execute();
 
@@ -115,7 +115,7 @@ public class ORTest {
 
         Connector out = new BOOL(true);
 
-        OR block = new OR(0, ins, out);
+        OR block = new OR(0, 0, ins, out);
 
         block.execute();
 

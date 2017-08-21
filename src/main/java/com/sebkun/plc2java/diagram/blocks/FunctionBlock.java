@@ -13,14 +13,18 @@ import java.util.Map;
  */
 public abstract class FunctionBlock {
 
+    protected int localId;
+
     protected int executionOrderId;
 
     protected Map<String, Connector> inputs;
 
     protected Map<String, Connector> outputs;
 
-    public FunctionBlock(int executionOrderId) {
+    public FunctionBlock(int localId, int executionOrderId) {
         this.executionOrderId = executionOrderId;
+
+        this.localId = localId;
 
         inputs  = new HashMap<>();
         outputs = new HashMap<>();

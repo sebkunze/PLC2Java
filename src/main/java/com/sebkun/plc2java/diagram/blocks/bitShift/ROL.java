@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class ROL extends FunctionBlock {
 
-    public ROL(int executionOrderId) {
-        super(executionOrderId);
+    public ROL(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

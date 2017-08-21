@@ -20,7 +20,7 @@ public class NOTTest {
         Connector in  = new BOOL(true);
         Connector out = new BOOL(true);
 
-        NOT block = new NOT(0, in, out);
+        NOT block = new NOT(0, 0, in, out);
 
         block.execute();
 
@@ -38,7 +38,7 @@ public class NOTTest {
         Connector in  = new BOOL(false);
         Connector out = new BOOL(false);
 
-        NOT block = new NOT(0, in, out);
+        NOT block = new NOT(0, 0, in, out);
 
         block.execute();
 

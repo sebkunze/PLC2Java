@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class EXPT extends FunctionBlock {
 
-    public EXPT(int executionOrderId) {
-        super(executionOrderId);
+    public EXPT(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

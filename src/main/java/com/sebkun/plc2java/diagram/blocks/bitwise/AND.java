@@ -24,8 +24,9 @@ public class AND extends FunctionBlock {
 
     private static final String PATTERN_INPUT_IN = "IN%d";
 
-    public AND(int executionOrderID, List<Connector> ins, Connector out) {
-        super(executionOrderID);
+    public AND(int localId, int executionOrderID, List<Connector> ins, Connector out) {
+        super(localId, executionOrderID);
+
 
         this.setInputList(PATTERN_INPUT_IN, ins);
 

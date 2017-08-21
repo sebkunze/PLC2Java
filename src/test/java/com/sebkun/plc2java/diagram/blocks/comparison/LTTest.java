@@ -27,7 +27,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -48,7 +48,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -70,7 +70,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -92,7 +92,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -114,7 +114,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -137,7 +137,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -160,7 +160,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 
@@ -183,7 +183,7 @@ public class LTTest {
 
         Connector out = new BOOL(false);
 
-        LT block = new LT(0, ins, out);
+        LT block = new LT(0, 0, ins, out);
 
         block.execute();
 

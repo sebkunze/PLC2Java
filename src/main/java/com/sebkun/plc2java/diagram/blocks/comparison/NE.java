@@ -18,8 +18,8 @@ public class NE extends FunctionBlock {
 
     public static final String OUTPUT_OUT = "OUT";
 
-    public NE(int executionOrderId, Connector in1, Connector in2, Connector out) {
-        super(executionOrderId);
+    public NE(int localId, int executionOrderId, Connector in1, Connector in2, Connector out) {
+        super(localId, executionOrderId);
 
         this.setInput(INPUT_IN1, in1);
         this.setInput(INPUT_IN2, in2);

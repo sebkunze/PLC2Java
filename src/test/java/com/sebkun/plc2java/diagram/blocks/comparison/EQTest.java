@@ -27,7 +27,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -48,7 +48,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -70,7 +70,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -92,7 +92,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -114,7 +114,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -137,7 +137,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 
@@ -160,7 +160,7 @@ public class EQTest {
 
         Connector out = new BOOL(false);
 
-        EQ block = new EQ(0, ins, out);
+        EQ block = new EQ(0, 0, ins, out);
 
         block.execute();
 

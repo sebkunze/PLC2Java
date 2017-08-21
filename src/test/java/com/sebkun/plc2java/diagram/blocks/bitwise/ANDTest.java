@@ -27,7 +27,7 @@ public class ANDTest {
 
         Connector out = new BOOL(false);
 
-        AND block = new AND(0, ins, out);
+        AND block = new AND(0, 0, ins, out);
 
         block.execute();
 
@@ -48,7 +48,7 @@ public class ANDTest {
 
         Connector out = new BOOL(false);
 
-        AND block = new AND(0, ins, out);
+        AND block = new AND(0, 0, ins, out);
 
         block.execute();
 
@@ -70,7 +70,7 @@ public class ANDTest {
 
         Connector out = new BOOL(false);
 
-        AND block = new AND(0, ins, out);
+        AND block = new AND(0, 0, ins, out);
 
         block.execute();
 
@@ -93,7 +93,7 @@ public class ANDTest {
 
         Connector out = new BOOL(false);
 
-        AND block = new AND(0, ins, out);
+        AND block = new AND(0, 0, ins, out);
 
         block.execute();
 
@@ -116,7 +116,7 @@ public class ANDTest {
 
         Connector out = new BOOL(true);
 
-        AND block = new AND(0, ins, out);
+        AND block = new AND(0, 0, ins, out);
 
         block.execute();
 

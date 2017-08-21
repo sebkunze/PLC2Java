@@ -23,8 +23,8 @@ public class GT extends FunctionBlock {
 
     private static final String INPUT_IN_PATTERN = "IN%d";
 
-    public GT(int executionOrderId, List<Connector> inputList, Connector out) {
-        super(executionOrderId);
+    public GT(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+        super(localId, executionOrderId);
 
         this.setInputList(INPUT_IN_PATTERN, inputList);
 

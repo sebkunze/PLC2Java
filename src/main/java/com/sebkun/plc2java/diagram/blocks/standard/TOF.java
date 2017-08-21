@@ -18,8 +18,8 @@ public class TOF extends FunctionBlock {
 
     public static final String OUTPUT_ET = "ET";
 
-    public TOF(int executionOrderId) {
-        super(executionOrderId);
+    public TOF(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

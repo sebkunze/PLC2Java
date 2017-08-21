@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class DIV extends FunctionBlock {
 
-    public DIV(int executionOrderId) {
-        super(executionOrderId);
+    public DIV(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class MUL extends FunctionBlock {
 
-    public MUL(int executionOrderId) {
-        super(executionOrderId);
+    public MUL(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class XORTest {
 
         Connector out = new BOOL(false);
 
-        XOR block = new XOR(0, ins, out);
+        XOR block = new XOR(0, 0, ins, out);
 
         block.execute();
 
@@ -47,7 +47,7 @@ public class XORTest {
 
         Connector out = new BOOL(true);
 
-        XOR block = new XOR(0, ins, out);
+        XOR block = new XOR(0, 0, ins, out);
 
         block.execute();
 
@@ -69,7 +69,7 @@ public class XORTest {
 
         Connector out = new BOOL(false);
 
-        XOR block = new XOR(0, ins, out);
+        XOR block = new XOR(0, 0, ins, out);
 
         block.execute();
 
@@ -92,7 +92,7 @@ public class XORTest {
 
         Connector out = new BOOL(false);
 
-        XOR block = new XOR(0, ins, out);
+        XOR block = new XOR(0, 0, ins, out);
 
         block.execute();
 
@@ -115,7 +115,7 @@ public class XORTest {
 
         Connector out = new BOOL(false);
 
-        XOR block = new XOR(0, ins, out);
+        XOR block = new XOR(0, 0, ins, out);
 
         block.execute();
 

@@ -23,8 +23,8 @@ public class XOR extends FunctionBlock {
 
     private static final String PATTERN_INPUT_IN = "IN%d";
 
-    public XOR(int executionOrderId, List<Connector> inputList, Connector out) {
-        super(executionOrderId);
+    public XOR(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+        super(localId, executionOrderId);
 
         this.setInputList(PATTERN_INPUT_IN, inputList);
 

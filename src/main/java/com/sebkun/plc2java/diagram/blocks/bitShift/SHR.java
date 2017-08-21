@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class SHR extends FunctionBlock {
 
-    public SHR(int executionOrderId) {
-        super(executionOrderId);
+    public SHR(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
     @Override
     public Map<String, Connector> execute() {

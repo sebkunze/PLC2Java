@@ -26,7 +26,7 @@ public class NETest {
 
         Connector out = new BOOL(false);
 
-        NE block = new NE(0, in1, in2, out);
+        NE block = new NE(0, 0, in1, in2, out);
 
         block.execute();
 
@@ -46,7 +46,7 @@ public class NETest {
 
         Connector out = new BOOL(false);
 
-        NE block = new NE(0, in1, in2, out);
+        NE block = new NE(0, 0, in1, in2, out);
 
         block.execute();
 
@@ -66,7 +66,7 @@ public class NETest {
 
         Connector out = new BOOL(false);
 
-        NE block = new NE(0, in1, in2, out);
+        NE block = new NE(0, 0, in1, in2, out);
 
         block.execute();
 

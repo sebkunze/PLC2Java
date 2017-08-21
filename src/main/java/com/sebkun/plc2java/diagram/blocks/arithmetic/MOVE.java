@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class MOVE extends FunctionBlock {
 
-    public MOVE(int executionOrderId) {
-        super(executionOrderId);
+    public MOVE(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override

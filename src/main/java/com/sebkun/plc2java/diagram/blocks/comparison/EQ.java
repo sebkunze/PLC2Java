@@ -23,8 +23,8 @@ public class EQ extends FunctionBlock {
 
     private static final String INPUT_IN_PATTERN = "IN%d";
 
-    public EQ(int executionOrderId, List<Connector> inputList, Connector out) { // TODO: add constructor without executionID
-        super(executionOrderId);
+    public EQ(int localId, int executionOrderId, List<Connector> inputList, Connector out) { // TODO: add constructor without executionID
+        super(localId, executionOrderId);
 
         this.setInputList(INPUT_IN_PATTERN, inputList);
 

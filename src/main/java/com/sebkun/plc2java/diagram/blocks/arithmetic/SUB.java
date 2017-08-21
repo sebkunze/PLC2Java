@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class SUB extends FunctionBlock {
 
-    public SUB(int executionOrderId) {
-        super(executionOrderId);
+    public SUB(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
     }
 
     @Override
