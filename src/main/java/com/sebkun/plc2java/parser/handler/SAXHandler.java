@@ -2,12 +2,12 @@ package com.sebkun.plc2java.parser.handler;
 
 import com.sebkun.plc2java.parser.objects.XMLDefinition;
 import com.sebkun.plc2java.parser.objects.XMLFunction;
+import com.sebkun.plc2java.parser.objects.XMLVariable;
 import com.sebkun.plc2java.parser.objects.definitions.XMLVariableDefinition;
 import com.sebkun.plc2java.parser.objects.functions.XMLBlock;
 import com.sebkun.plc2java.parser.objects.variables.XMLInOutVariable;
 import com.sebkun.plc2java.parser.objects.variables.XMLInVariable;
 import com.sebkun.plc2java.parser.objects.variables.XMLOutVariable;
-import com.sebkun.plc2java.parser.objects.XMLVariable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -49,11 +49,11 @@ public class SAXHandler extends DefaultHandler {
 
     private static final String ELEMENT_BLOCK           = "block";
 
-    private static final String ELEMENT_INPUT_VARIABLE  = "inputVariable";
+    private static final String ELEMENT_INPUT_VARIABLE  = "inputVariables";
 
-    private static final String ELEMENT_INOUT_VARIABLE = "inOutVariable";
+    private static final String ELEMENT_INOUT_VARIABLE  = "inOutVariables";
 
-    private static final String ELEMENT_OUTPUT_VARIABLE = "outputVariable";
+    private static final String ELEMENT_OUTPUT_VARIABLE = "outputVariables";
 
     private static final String ELEMENT_EXPRESSION      = "expression";
 
@@ -78,6 +78,8 @@ public class SAXHandler extends DefaultHandler {
     private static final String ATTRIBUTE_NEGATED_IN         = "negatedIn";
 
     private static final String ATTRIBUTE_NEGATED_OUT        = "negatedOut";
+
+    public static final String ATTRIBUTE_REF_LOCAL_ID        = "refLocalId";
 
     /**
      * --- PARSED FBD PROGRAM ELEMENTS ---
@@ -223,8 +225,9 @@ public class SAXHandler extends DefaultHandler {
         // </FBD>
         } else if (ELEMENT_VARIABLE.equals(qName) && containsElement(ELEMENT_BLOCK)) {
 
-            this.objStack.push(
-                    String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_FORMAL_PARAMETER))));
+            String formalParam = String.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_FORMAL_PARAMETER)));
+
+            objStack.push(formalParam);
 
         // <FBD>
         //   <inputVariable>
@@ -238,15 +241,16 @@ public class SAXHandler extends DefaultHandler {
         } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(ELEMENT_INPUT_VARIABLE)) {
 
             // pop formal parameter attribute of variable element
-            String param = String.valueOf(this.objStack.pop());
+            String formalParam = String.valueOf(objStack.pop());
 
             // peek at function block
-            XMLBlock block = (XMLBlock) this.objStack.peek();
+            XMLBlock block = (XMLBlock) objStack.peek();
 
-            block.setInputVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
+            Integer localRefId = Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_REF_LOCAL_ID)));
 
-            this.objStack.push(param);
+            block.setInputVariable(formalParam, localRefId);
+
+            objStack.push(formalParam);
 
         // <FBD>
         //   <inOutVariable>
@@ -260,15 +264,16 @@ public class SAXHandler extends DefaultHandler {
         } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(ELEMENT_INOUT_VARIABLE)) {
 
             // pop formal parameter attribute of variable element
-            String param = String.valueOf(this.objStack.pop());
+            String formalParam = String.valueOf(objStack.pop());
 
             // peek at function block
-            XMLBlock block = (XMLBlock) this.objStack.peek();
+            XMLBlock block = (XMLBlock) objStack.peek();
 
-            block.setInOutVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
+            Integer localRefId = Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_REF_LOCAL_ID)));
 
-            this.objStack.push(param);
+            block.setInOutVariable(formalParam, localRefId);
+
+            objStack.push(formalParam);
 
         // <FBD>
         //   <outputVariable>
@@ -282,15 +287,16 @@ public class SAXHandler extends DefaultHandler {
         } else if (ELEMENT_CONNECTION.equals(qName) && containsElement(ELEMENT_OUTPUT_VARIABLE)) {
 
             // pop formal parameter attribute of variable element
-            String param = String.valueOf(objStack.pop());
+            String formalParam = String.valueOf(objStack.pop());
 
             // peek at function block
             XMLBlock block = (XMLBlock) objStack.peek();
 
-            block.setOutputVariable(
-                    param, Integer.valueOf(attributes.getValue(attributes.getIndex(XMLBlock.ATTRIBUTE_REF_LOCAL_ID))));
+            Integer localRefId = Integer.valueOf(attributes.getValue(attributes.getIndex(ATTRIBUTE_REF_LOCAL_ID)));
 
-            this.objStack.push(param);
+            block.setOutputVariable(formalParam, localRefId);
+
+            objStack.push(formalParam);
         }
     }
 
