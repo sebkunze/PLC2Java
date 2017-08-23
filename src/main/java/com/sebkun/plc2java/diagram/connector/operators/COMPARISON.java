@@ -7,21 +7,21 @@ import com.sebkun.plc2java.diagram.connector.Connector;
  */
 public interface COMPARISON {
 
-    Connector<Boolean> eq(Connector c)
+    boolean eq(Connector c)
             throws NonSupportedOperationException;
 
-    Connector<Boolean> ge(Connector c)
+    boolean ge(Connector c)
             throws NonSupportedOperationException;
 
-    Connector<Boolean> gt(Connector c)
+    boolean gt(Connector c)
             throws NonSupportedOperationException;
 
-    Connector<Boolean> le(Connector c)
+    boolean le(Connector c)
             throws NonSupportedOperationException;
 
-    Connector<Boolean> lt(Connector c)
+    boolean lt(Connector c)
             throws NonSupportedOperationException;
 
-    Connector<Boolean> ne(Connector c)
+    boolean ne(Connector c)
             throws NonSupportedOperationException;
 }

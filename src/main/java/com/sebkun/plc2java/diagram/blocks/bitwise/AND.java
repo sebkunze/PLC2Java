@@ -1,13 +1,13 @@
 package com.sebkun.plc2java.diagram.blocks.bitwise;
 
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
-import com.sebkun.plc2java.diagram.blocks.comparison.EQ;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
-import java.util.List;
 import java.util.Map;
+import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 
 /**
  * @author sebkun
@@ -16,31 +16,23 @@ public class AND extends FunctionBlock {
 
     // --- INPUTS --
 
+    public static final String INPUT_IN = "IN%d";
+
     // --- OUTPUTS ---
 
-    public static final String OUTPUT_OUT        = "OUT";
+    public static final String OUTPUT_OUT = "OUT";
 
-    // --- PATTERNS ---
+    // --- CONSTRUCTOR ---
 
-    private static final String PATTERN_INPUT_IN = "IN%d";
+    public AND(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
 
-    public AND(int localId, int executionOrderID, List<Connector> ins, Connector out) {
+    public AND(int localId, int executionOrderID, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderID);
 
-
-        this.setInputList(PATTERN_INPUT_IN, ins);
-
-        this.setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) this.getOutputs().get(AND.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
@@ -49,19 +41,29 @@ public class AND extends FunctionBlock {
 
         if (getInputs().size() < 2) {
 
-            updateOutput(AND.OUTPUT_OUT, new BOOL(true));
+            setOutputValue(OUTPUT_OUT, true);
         } else {
 
-            Connector con = getInputs().get("IN1");
+            setOutputValue(OUTPUT_OUT, getInput(String.format(INPUT_IN, 1)).getValue());
 
-            for (int i = 1; i < getInputs().size(); i++) {
+            getInputs().values().stream()
+                    .map(in ->
+                        {
+                            try {
 
-                Connector in = getInputs().get(String.format(AND.PATTERN_INPUT_IN, i + 1));
+                                setOutputValue(OUTPUT_OUT, getOutput(OUTPUT_OUT).and(in));
 
-                con = con.and(in);
-            }
-            updateOutput(EQ.OUTPUT_OUT, con);
+                                return true;
+                            } catch (NonSupportedOperationException e) {
+
+                                setOutputValue(OUTPUT_OUT, false);
+
+                                return false;
+                            }
+                        })
+                    .collect(Collectors.toList());
         }
-        return outputs;
+
+        return getOutputs();
     }
 }

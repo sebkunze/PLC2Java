@@ -14,38 +14,31 @@ public class NOT extends FunctionBlock {
 
     // --- INPUTS --
 
-    private static final String INPUT_IN  = "IN1";
+    public static final String INPUT_IN  = "IN1";
 
     // --- OUTPUTS ---
 
     public static final String OUTPUT_OUT = "OUT";
 
-    public NOT(int localId, int executionOrderId, Connector in, Connector out) {
+    // --- CONSTRUCTOR ---
+
+    public NOT(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
+
+    public NOT(int localId, int executionOrderId, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderId);
 
-        setInput(INPUT_IN, in);
-
-        setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) getOutputs().get(NOT.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {
 
-        Connector con = inputs.get(INPUT_IN).not();
+        setOutputValue(OUTPUT_OUT, getInput(INPUT_IN).not());
 
-        this.updateOutput(NOT.OUTPUT_OUT, con);
-
-        return outputs;
+        return getOutputs();
     }
 }

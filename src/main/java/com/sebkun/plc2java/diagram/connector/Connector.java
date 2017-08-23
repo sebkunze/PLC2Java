@@ -8,10 +8,17 @@ import com.sebkun.plc2java.diagram.connector.operators.LOGIC;
  */
 public abstract class Connector<T> implements COMPARISON, LOGIC {
 
-    private T value;
+    protected int localId;
+
+    protected T value;
 
     public T getValue() {
         return value;
+    }
+
+    public Connector (int localId, T value) {
+        this.localId = localId;
+        this.value   = value;
     }
 
     public void setValue(T value) {

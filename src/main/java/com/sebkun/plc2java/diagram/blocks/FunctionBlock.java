@@ -1,10 +1,9 @@
 package com.sebkun.plc2java.diagram.blocks;
 
-import com.sebkun.plc2java.diagram.blocks.bitwise.XOR;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -22,51 +21,68 @@ public abstract class FunctionBlock {
     protected Map<String, Connector> outputs;
 
     public FunctionBlock(int localId, int executionOrderId) {
-        this.executionOrderId = executionOrderId;
 
+        this.executionOrderId = executionOrderId;
         this.localId = localId;
 
-        inputs  = new HashMap<>();
-        outputs = new HashMap<>();
+        inputs  = Collections.EMPTY_MAP;
+        outputs = Collections.EMPTY_MAP;
     }
 
     public int getExecutionOrderId() {
         return executionOrderId;
     }
 
-    public abstract Map<String, Connector> execute()
-            throws NonSupportedOperationException;
-
     public Map<String, Connector> getInputs() {
         return inputs;
     }
 
-    public void setInput(String key, Connector value) {
-        this.inputs.put(key, value);
+    public Connector getInput(String key) {
+        return inputs.get(key);
     }
 
-    public void setInputList(String keyPrefix, List<Connector> values) {
+    public Object getInputValue(String key) {
+        return inputs.get(key).getValue();
+    }
 
-        for (int i = 0; i < values.size(); i++) {
+    public void setInputs(Map<String, Connector> inputs) {
+        this.inputs = inputs;
+    }
 
-            String     key  = String.format(keyPrefix, i + 1);
-            Connector value = values.get(i);
+    public void setInput(String key, Connector value) {
+        inputs.put(key, value);
+    }
 
-            inputs.put(key, value);
-        }
+    public void setInputValue(String key, Object value) {
+        inputs.get(key).setValue(value);
     }
 
     public Map<String, Connector> getOutputs() {
         return outputs;
     }
 
-    public void updateOutput(String key, Connector connector) {
-        this.outputs.get(key).setValue(connector.getValue());
+    public Connector getOutput(String key) {
+        return outputs.get(key);
+    }
+
+    public Object getOutputValue(String key) {
+        return outputs.get(key).getValue();
+    }
+
+    public void setOutputs(Map<String, Connector> outputs) {
+        this.outputs = outputs;
     }
 
     public void setOutput(String key, Connector output) {
-        this.outputs.put(key, output);
+        outputs.put(key, output);
     }
+
+    public void setOutputValue(String key, Object value) {
+        outputs.get(key).setValue(value);
+    }
+
+    public abstract Map<String, Connector> execute()
+            throws NonSupportedOperationException;
 
     @Override
     public boolean equals(Object obj) {

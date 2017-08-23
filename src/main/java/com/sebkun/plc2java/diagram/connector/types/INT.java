@@ -8,13 +8,12 @@ import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationExce
  */
 public class INT extends Connector<Integer> {
 
-    public INT(Integer value) {
-
-        this.setValue(value);
+    public INT(int localId, Integer value) {
+        super(localId, value);
     }
 
     @Override
-    public Connector and(Connector c)
+    public boolean and(Connector c)
             throws NonSupportedOperationException {
 
         throw new NonSupportedOperationException(
@@ -22,7 +21,7 @@ public class INT extends Connector<Integer> {
     }
 
     @Override
-    public Connector or(Connector c)
+    public boolean or(Connector c)
             throws NonSupportedOperationException {
 
         throw new NonSupportedOperationException(
@@ -30,7 +29,7 @@ public class INT extends Connector<Integer> {
     }
 
     @Override
-    public Connector not()
+    public boolean xor(Connector c)
             throws NonSupportedOperationException {
 
         throw new NonSupportedOperationException(
@@ -38,7 +37,15 @@ public class INT extends Connector<Integer> {
     }
 
     @Override
-    public Connector eq(Connector c)
+    public boolean not()
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
+    }
+
+    @Override
+    public boolean eq(Connector c)
             throws NonSupportedOperationException {
 
         if (!(c instanceof INT)) {
@@ -49,11 +56,11 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() == i.getValue());
+        return this.getValue() == i.getValue();
     }
 
     @Override
-    public Connector ge(Connector c)
+    public boolean ge(Connector c)
             throws NonSupportedOperationException {
 
         if(!(c instanceof INT)) {
@@ -64,11 +71,11 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() >= i.getValue());
+        return this.getValue() >= i.getValue();
     }
 
     @Override
-    public Connector gt(Connector c)
+    public boolean gt(Connector c)
             throws NonSupportedOperationException {
 
         if(!(c instanceof INT)) {
@@ -79,11 +86,11 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() > i.getValue());
+        return this.getValue() > i.getValue();
     }
 
     @Override
-    public Connector le(Connector c)
+    public boolean le(Connector c)
             throws NonSupportedOperationException {
 
         if(!(c instanceof INT)) {
@@ -94,11 +101,11 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() <= i.getValue());
+        return this.getValue() <= i.getValue();
     }
 
     @Override
-    public Connector lt(Connector c)
+    public boolean lt(Connector c)
             throws NonSupportedOperationException {
 
         if(!(c instanceof INT)) {
@@ -109,11 +116,11 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() < i.getValue());
+        return this.getValue() < i.getValue();
     }
 
     @Override
-    public Connector ne(Connector c)
+    public boolean ne(Connector c)
             throws NonSupportedOperationException {
 
         if (!(c instanceof INT)) {
@@ -124,6 +131,6 @@ public class INT extends Connector<Integer> {
 
         INT i = (INT) c;
 
-        return new BOOL(this.getValue() != i.getValue());
+        return this.getValue() != i.getValue();
     }
 }

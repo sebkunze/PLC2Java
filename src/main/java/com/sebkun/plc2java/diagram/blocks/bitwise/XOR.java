@@ -4,6 +4,7 @@ import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 import java.util.Map;
@@ -15,30 +16,23 @@ public class XOR extends FunctionBlock {
 
     // --- INPUTS --
 
+    public static final String INPUT_IN  = "IN%d";
+
     // --- OUTPUTS ---
 
-    public static final String OUTPUT_OUT        = "OUT";
+    public static final String OUTPUT_OUT = "OUT";
 
-    // --- PATTERNS ---
+    // --- CONSTRUCTOR ---
 
-    private static final String PATTERN_INPUT_IN = "IN%d";
+    public XOR(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
 
-    public XOR(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+    public XOR(int localId, int executionOrderId, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderId);
 
-        this.setInputList(PATTERN_INPUT_IN, inputList);
-
-        this.setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) getOutputs().get(XOR.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
@@ -47,18 +41,17 @@ public class XOR extends FunctionBlock {
 
         if (getInputs().size() < 2) {
 
-            updateOutput(XOR.OUTPUT_OUT, new BOOL(true));
+            setOutputValue(OUTPUT_OUT, true);
         } else {
 
-            Connector con = getInputs().get(String.format(XOR.PATTERN_INPUT_IN, 1));
+            setOutputValue(OUTPUT_OUT, getInput(String.format(INPUT_IN, 1)).getValue());
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(String.format(XOR.PATTERN_INPUT_IN, i + 1));
+                Connector in = getInputs().get(String.format(XOR.INPUT_IN, i + 1));
 
-                con = (con.and(in.not())).or(in.and(con.not()));
+                setOutputValue(OUTPUT_OUT, getOutput(OUTPUT_OUT).xor(in));
             }
-            updateOutput(XOR.OUTPUT_OUT, con);
         }
         return outputs;
     }

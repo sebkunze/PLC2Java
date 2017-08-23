@@ -15,30 +15,25 @@ public class LT extends FunctionBlock {
 
     // --- INPUTS --
 
+    public static final String INPUT_IN   = "IN%d";
+
     // --- OUTPUTS ---
 
-    public static final String OUTPUT_OUT        = "OUT";
+    public static final String OUTPUT_OUT = "OUT";
 
     // --- PATTERNS ---
 
-    private static final String INPUT_IN_PATTERN = "IN%d";
+    // --- CONSTRUCTOR ---
 
-    public LT(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+    public LT(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
+
+    public LT(int localId, int executionOrderId, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderId);
 
-        this.setInputList(INPUT_IN_PATTERN, inputList);
-
-        this.setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) getOutputs().get(LT.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
@@ -47,33 +42,27 @@ public class LT extends FunctionBlock {
 
         if (getInputs().size() < 2) {
 
-            updateOutput(LT.OUTPUT_OUT, new BOOL(true));
+            setOutputValue(OUTPUT_OUT, true);
         } else {
 
-            Connector<Boolean> out = new BOOL(true);
+            Connector<Boolean> out = new BOOL(-1, true);
 
-            Connector tmp = getInputs().get(String.format(LT.INPUT_IN_PATTERN, 1));
+            Connector tmp = getInputs().get(String.format(LT.INPUT_IN, 1));
 
             for (int i = 1; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(String.format(LT.INPUT_IN_PATTERN, i + 1));
+                Connector in = getInputs().get(String.format(LT.INPUT_IN, i + 1));
 
-                // check if pairs is not less than.
-                if (!tmp.lt(in).getValue()) {
-
-                    // update output.
-                    out = new BOOL(false);
-
-                    // stop iterating input pairs.
-                    break;
+                if (!tmp.lt(in)) {
+                    out = new BOOL(0, false);
                 }
 
-                // continue with next pair of inputs.
                 tmp = in;
             }
 
-            updateOutput(LT.OUTPUT_OUT, out);
+            setOutputValue(OUTPUT_OUT, out.getValue());
         }
-        return outputs;
+
+        return getOutputs();
     }
 }

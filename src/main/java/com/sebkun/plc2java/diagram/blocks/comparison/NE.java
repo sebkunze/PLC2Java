@@ -12,39 +12,54 @@ import java.util.Map;
  */
 public class NE extends FunctionBlock {
 
-    public static final String INPUT_IN1  = "IN1";
+    // --- INPUTS --
 
-    public static final String INPUT_IN2  = "IN2";
+    public static final String INPUT_IN   = "IN%d";
+
+    // --- OUTPUTS ---
 
     public static final String OUTPUT_OUT = "OUT";
 
-    public NE(int localId, int executionOrderId, Connector in1, Connector in2, Connector out) {
+    // --- CONSTRUCTORS ---
+
+    public NE(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
+
+    public NE(int localId, int executionOrderId, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderId);
 
-        this.setInput(INPUT_IN1, in1);
-        this.setInput(INPUT_IN2, in2);
-
-        this.setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) getOutputs().get(NE.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
     public Map<String, Connector> execute()
             throws NonSupportedOperationException {
 
-        Connector out = getInputs().get(NE.INPUT_IN1).ne(getInputs().get(NE.INPUT_IN2));
+        if (getInputs().size() < 2) {
 
-        updateOutput(NE.OUTPUT_OUT, out);
+            setOutputValue(OUTPUT_OUT, true);
+        } else {
 
-        return outputs;
+            Connector<Boolean> out = new BOOL(-1, true);
+
+            Connector tmp = getInputs().get(String.format(NE.INPUT_IN, 1));
+
+            for (int i = 1; i < getInputs().size(); i++) {
+
+                Connector in = getInputs().get(String.format(NE.INPUT_IN, i + 1));
+
+                if (!tmp.ne(in)) {
+                    out = new BOOL(0, false);
+                }
+
+                tmp = in;
+            }
+
+            setOutputValue(OUTPUT_OUT, out.getValue());
+        }
+
+        return getOutputs();
     }
 }

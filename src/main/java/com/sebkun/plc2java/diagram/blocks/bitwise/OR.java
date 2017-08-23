@@ -15,30 +15,23 @@ public class OR extends FunctionBlock {
 
     // --- INPUTS --
 
+    public static final String INPUT_IN  = "IN%d";
+
     // --- OUTPUTS ---
 
-    public static final String OUTPUT_OUT        = "OUT";
+    public static final String OUTPUT_OUT = "OUT";
 
-    // --- PATTERNS ---
+    // --- CONSTRUCTOR ---
 
-    private static final String PATTERN_INPUT_IN = "IN%d";
+    public OR(int localId, int executionOrderId) {
+        super(localId, executionOrderId);
+    }
 
-    public OR(int localId, int executionOrderId, List<Connector> inputList, Connector out) {
+    public OR(int localId, int executionOrderId, Map<String, Connector> inputMap, Map<String, Connector> outputMap) {
         super(localId, executionOrderId);
 
-        this.setInputList(PATTERN_INPUT_IN, inputList);
-
-        this.setOutput(OUTPUT_OUT, out);
-    }
-
-    public BOOL getOutput() {
-
-        return (BOOL) getOutputs().get(OR.OUTPUT_OUT);
-    }
-
-    public Boolean getOutputValue() {
-
-        return getOutput().getValue();
+        setInputs(inputMap);
+        setOutputs(outputMap);
     }
 
     @Override
@@ -47,19 +40,19 @@ public class OR extends FunctionBlock {
 
         if (getInputs().size() < 2) {
 
-            updateOutput(OR.OUTPUT_OUT, new BOOL(true));
+            setOutputValue(OUTPUT_OUT, true);
         } else {
 
-            Connector con = getInputs().get(String.format(OR.PATTERN_INPUT_IN, 1));
+            setOutputValue(OUTPUT_OUT, getInput(String.format(INPUT_IN, 1)).getValue());
 
-            for (int i = 1; i < getInputs().size(); i++) {
+            for (int i = 0; i < getInputs().size(); i++) {
 
-                Connector in = getInputs().get(String.format(OR.PATTERN_INPUT_IN, i + 1));
+                Connector in = getInputs().get(String.format(OR.INPUT_IN, i + 1));
 
-                con = con.or(in);
+                setOutputValue(OUTPUT_OUT, getOutput(OUTPUT_OUT).or(in));
             }
-            updateOutput(OR.OUTPUT_OUT, con);
         }
+
         return outputs;
     }
 }
