@@ -3,10 +3,8 @@ package com.sebkun.plc2java.diagram.blocks.bitwise;
 import com.sebkun.plc2java.diagram.blocks.FunctionBlock;
 import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
-import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
 import java.util.Map;
-import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 /**

@@ -5,7 +5,6 @@ import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 import com.sebkun.plc2java.diagram.connector.types.BOOL;
 
-import java.util.List;
 import java.util.Map;
 
 /**
