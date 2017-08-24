@@ -4,7 +4,6 @@ import com.sebkun.plc2java.diagram.connector.Connector;
 import com.sebkun.plc2java.diagram.connector.operators.NonSupportedOperationException;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +26,18 @@ public abstract class FunctionBlock {
 
         inputs  = Collections.EMPTY_MAP;
         outputs = Collections.EMPTY_MAP;
+    }
+
+    public int getLocalId() {
+        return localId;
+    }
+
+    public void setLocalId(int localId) {
+        this.localId = localId;
+    }
+
+    public void setExecutionOrderId(int executionOrderId) {
+        this.executionOrderId = executionOrderId;
     }
 
     public int getExecutionOrderId() {
