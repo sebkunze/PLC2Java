@@ -13,6 +13,41 @@ public class INT extends Connector<Integer> {
     }
 
     @Override
+    public Integer add(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer div(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer expt(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer mod(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer move(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer mul(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
+    public Integer sub(Connector c) throws NonSupportedOperationException {
+        return null;
+    }
+
+    @Override
     public boolean and(Connector c)
             throws NonSupportedOperationException {
 

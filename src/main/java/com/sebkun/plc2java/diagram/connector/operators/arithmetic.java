@@ -3,7 +3,7 @@ package com.sebkun.plc2java.diagram.connector.operators;
 import com.sebkun.plc2java.diagram.connector.Connector;
 
 /**
- * Created by sebkun on 2017-08-24.
+ * @author sebkun
  */
 public interface arithmetic {
 
