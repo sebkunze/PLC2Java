@@ -23,38 +23,59 @@ public class BOOL extends Connector<Boolean> {
     }
 
     @Override
-    public Integer add(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer add(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer div(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer div(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer expt(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer expt(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer mod(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer mod(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer move(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer move(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer mul(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer mul(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
-    public Integer sub(Connector c) throws NonSupportedOperationException {
-        return null;
+    public Integer sub(Connector c)
+            throws NonSupportedOperationException {
+
+        throw new NonSupportedOperationException(
+                String.format("operation not supported for type %s!", getClass().getSimpleName()));
     }
 
     @Override
