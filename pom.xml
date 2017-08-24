@@ -44,8 +44,21 @@
                         <version>2.20</version>
                     </dependency>
 
-
                 </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.evosuite.plugins</groupId>
+                <artifactId>evosuite-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare</goal>
+                        </goals>
+                        <phase>process-test-classes</phase>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
@@ -69,7 +82,13 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.evosuite/evosuite-runtime -->
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-standalone-runtime</artifactId>
+            <version>1.0.5</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
