@@ -1,19 +1,11 @@
-package com.sebkun.plc2java.parser.objects.functions;
+package com.sebkun.plc2java.parser.objects.tree.functions;
 
-import com.sebkun.plc2java.parser.objects.XMLFunction;
+import com.sebkun.plc2java.parser.objects.tree.XMLFunction;
 
 /**
  * @author sebkun
  */
 public class XMLBlock extends XMLFunction {
-
-    public static final String ATTRIBUTE_INPUT_VARIABLES  = "inputVariables";
-
-    public static final String ATTRIBUTE_INOUT_VARIABLES  = "inOutVariables";
-
-    public static final String ATTRIBUTE_OUTPUT_VARIABLES = "outputVariables";
-
-    public static final String ATTRIBUTE_REF_LOCAL_ID     = "refLocalId";
 
     public XMLBlock(Integer localId, String typeName, Integer executionOrder) {
         super(localId, typeName, executionOrder);

@@ -1,9 +1,9 @@
-package com.sebkun.plc2java.parser;
+package com.sebkun.plc2java.parser.objects;
 
 import com.sebkun.plc2java.parser.handler.SAXHandler;
-import com.sebkun.plc2java.parser.objects.XMLDefinition;
-import com.sebkun.plc2java.parser.objects.XMLFunction;
-import com.sebkun.plc2java.parser.objects.XMLVariable;
+import com.sebkun.plc2java.parser.objects.tree.XMLDefinition;
+import com.sebkun.plc2java.parser.objects.tree.XMLFunction;
+import com.sebkun.plc2java.parser.objects.tree.XMLVariable;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;

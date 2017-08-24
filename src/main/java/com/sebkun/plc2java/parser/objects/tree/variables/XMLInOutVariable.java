@@ -1,6 +1,6 @@
-package com.sebkun.plc2java.parser.objects.variables;
+package com.sebkun.plc2java.parser.objects.tree.variables;
 
-import com.sebkun.plc2java.parser.objects.XMLVariable;
+import com.sebkun.plc2java.parser.objects.tree.XMLVariable;
 
 /**
  * @author sebkun

@@ -1,13 +1,13 @@
 package com.sebkun.plc2java.parser.handler;
 
-import com.sebkun.plc2java.parser.objects.XMLDefinition;
-import com.sebkun.plc2java.parser.objects.XMLFunction;
-import com.sebkun.plc2java.parser.objects.XMLVariable;
-import com.sebkun.plc2java.parser.objects.definitions.XMLVariableDefinition;
-import com.sebkun.plc2java.parser.objects.functions.XMLBlock;
-import com.sebkun.plc2java.parser.objects.variables.XMLInOutVariable;
-import com.sebkun.plc2java.parser.objects.variables.XMLInVariable;
-import com.sebkun.plc2java.parser.objects.variables.XMLOutVariable;
+import com.sebkun.plc2java.parser.objects.tree.XMLDefinition;
+import com.sebkun.plc2java.parser.objects.tree.XMLFunction;
+import com.sebkun.plc2java.parser.objects.tree.XMLVariable;
+import com.sebkun.plc2java.parser.objects.tree.definitions.XMLVariableDefinition;
+import com.sebkun.plc2java.parser.objects.tree.functions.XMLBlock;
+import com.sebkun.plc2java.parser.objects.tree.variables.XMLInOutVariable;
+import com.sebkun.plc2java.parser.objects.tree.variables.XMLInVariable;
+import com.sebkun.plc2java.parser.objects.tree.variables.XMLOutVariable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

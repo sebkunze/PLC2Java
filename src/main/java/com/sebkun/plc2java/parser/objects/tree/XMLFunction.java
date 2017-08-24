@@ -1,4 +1,4 @@
-package com.sebkun.plc2java.parser.objects;
+package com.sebkun.plc2java.parser.objects.tree;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +26,10 @@ public abstract class XMLFunction {
         this.typeName         = typeName;
         this.executionOrderID = executionOrderID;
 
-        inputVariables  = new HashMap<String, Integer>();
-        inOutVariables  = new HashMap<String, Integer>();
-        outputVariables = new HashMap<String, Integer>();
+        inputVariables  = new HashMap<>();
+        inOutVariables  = new HashMap<>();
+        outputVariables = new HashMap<>();
     }
-
 
     public Integer getLocalId() {
         return this.localId;
@@ -54,6 +53,7 @@ public abstract class XMLFunction {
     }
 
     public Map<String, Integer> getInOutVariables() {
+
         return inOutVariables;
     }
 
@@ -63,6 +63,7 @@ public abstract class XMLFunction {
     }
 
     public Map<String, Integer> getOutputVariables() {
+
         return outputVariables;
     }
 

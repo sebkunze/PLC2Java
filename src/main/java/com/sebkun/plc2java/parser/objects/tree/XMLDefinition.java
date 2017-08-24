@@ -1,4 +1,4 @@
-package com.sebkun.plc2java.parser.objects;
+package com.sebkun.plc2java.parser.objects.tree;
 
 /**
  * @author sebkun

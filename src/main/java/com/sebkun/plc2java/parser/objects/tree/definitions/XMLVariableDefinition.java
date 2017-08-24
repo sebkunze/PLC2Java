@@ -1,6 +1,6 @@
-package com.sebkun.plc2java.parser.objects.definitions;
+package com.sebkun.plc2java.parser.objects.tree.definitions;
 
-import com.sebkun.plc2java.parser.objects.XMLDefinition;
+import com.sebkun.plc2java.parser.objects.tree.XMLDefinition;
 
 public class XMLVariableDefinition extends XMLDefinition {
 
