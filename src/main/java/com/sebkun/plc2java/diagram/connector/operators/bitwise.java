@@ -5,23 +5,17 @@ import com.sebkun.plc2java.diagram.connector.Connector;
 /**
  * @author sebkun
  */
-public interface COMPARISON {
+public interface bitwise {
 
-    boolean eq(Connector c)
+    boolean and(Connector c)
             throws NonSupportedOperationException;
 
-    boolean ge(Connector c)
+    boolean or(Connector c)
             throws NonSupportedOperationException;
 
-    boolean gt(Connector c)
+    boolean xor(Connector c)
             throws NonSupportedOperationException;
 
-    boolean le(Connector c)
-            throws NonSupportedOperationException;
-
-    boolean lt(Connector c)
-            throws NonSupportedOperationException;
-
-    boolean ne(Connector c)
+    boolean not()
             throws NonSupportedOperationException;
 }

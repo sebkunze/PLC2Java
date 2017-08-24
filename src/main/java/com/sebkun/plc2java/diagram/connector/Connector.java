@@ -1,12 +1,12 @@
 package com.sebkun.plc2java.diagram.connector;
 
-import com.sebkun.plc2java.diagram.connector.operators.COMPARISON;
-import com.sebkun.plc2java.diagram.connector.operators.LOGIC;
+import com.sebkun.plc2java.diagram.connector.operators.comparison;
+import com.sebkun.plc2java.diagram.connector.operators.bitwise;
 
 /**
  * @author sebkun
  */
-public abstract class Connector<T> implements COMPARISON, LOGIC {
+public abstract class Connector<T> implements comparison, bitwise {
 
     protected int localId;
 
