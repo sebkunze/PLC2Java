@@ -1,6 +1,6 @@
 package com.sebkun.plc2java;
 
-import com.sebkun.plc2java.parser.XMLDocument;
+import com.sebkun.plc2java.parser.objects.XMLDocument;
 
 public class PLC2Java {
 
@@ -9,6 +9,5 @@ public class PLC2Java {
         String path = "src/test/resources/examples/example01.xml";
 
         new XMLDocument(path);
-
     }
 }

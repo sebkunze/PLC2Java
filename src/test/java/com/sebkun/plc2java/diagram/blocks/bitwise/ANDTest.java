@@ -34,7 +34,7 @@ public class ANDTest {
 
         Connector<Boolean> in1 = new BOOL(0, true);
 
-        inputMap.put(String.format(AND.INPUT_IN, 1), new BOOL(0, true));
+        inputMap.put(String.format(AND.INPUT_IN, 1), in1);
 
         Connector out = new BOOL(0, false);
 
